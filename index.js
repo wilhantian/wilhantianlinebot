@@ -138,6 +138,21 @@ regReply("message", function (event) {
                 "flex": 0
             }
         };
+        console.log("发送游戏消息");
+        return client.replyMessage(event.replyToken, echo);
+    }
+    return null;
+});
+
+regReply("message", function (event) {
+    if (event.message.type == "text" && event.message.text.indexOf("在哪") >= 0) {
+        const echo = {
+            "type": "location",
+            "title": "my location",
+            "address": "〒150-0002 東京都渋谷区渋谷２丁目２１−１",
+            "latitude": 35.65910807942215,
+            "longitude": 139.70372892916203
+        };
         return client.replyMessage(event.replyToken, echo);
     }
     return null;
