@@ -38,16 +38,17 @@ app.all('/callback', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
     console.log("收到消息:", event)
-    if (event.type !== 'message' || event.message.type !== 'text') {
-        // ignore non-text-message event
-        return Promise.resolve(null);
-    }
+    return handleReply(event);
+    // if (event.type !== 'message' || event.message.type !== 'text') {
+    //     // ignore non-text-message event
+    //     return Promise.resolve(null);
+    // }
 
-    // create a echoing text message
-    const echo = { type: 'text', text: event.message.text + '.....' };
+    // // create a echoing text message
+    // const echo = { type: 'text', text: event.message.text + '.....' };
 
-    // use reply API
-    return client.replyMessage(event.replyToken, echo);
+    // // use reply API
+    // return client.replyMessage(event.replyToken, echo);
 }
 
 // listen on port
@@ -55,3 +56,36 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`listening on ${port}`);
 });
+
+///////////////////////////////////////////////////////////////////////
+var msgDict = {};
+// 注册回复
+// @callback 如果返回true说明此消息已处理
+function regReply(type, callback){
+    if(!msgDict[type]){
+        msgDict[type].push(callback);
+    }
+}
+
+function handleReply(event){
+    var type = event.type;
+    var list = msgDict[type] || [];
+    for(var i=0; i<list.length; i++){
+        var callback = list[i];
+        var ret = callback(event);
+        if(ret){
+            return ret
+        }
+    }
+    return Promise.resolve(null);
+}
+
+
+regReply("message", function(event){
+    if(event.message.type == "text" && event.message.text == "110"){
+        const echo = { type: 'text', text: "你要报警吗？" };
+        // use reply API
+        return client.replyMessage(event.replyToken, echo);
+    }
+    return false;
+})
