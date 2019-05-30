@@ -31,7 +31,6 @@ app.all('/callback', line.middleware(config), (req, res) => {
         .catch((err) => {
             res.json({
                 error: "错误了",
-                data: JSON.stringify(err)
             })
         });
 });
