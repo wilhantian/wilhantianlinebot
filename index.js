@@ -63,8 +63,9 @@ var msgDict = {};
 // @callback 如果返回true说明此消息已处理
 function regReply(type, callback){
     if(!msgDict[type]){
-        msgDict[type].push(callback);
+        msgDict[type] = [];
     }
+    msgDict[type].push(callback);
 }
 
 function handleReply(event){
