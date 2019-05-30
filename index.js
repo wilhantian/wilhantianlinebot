@@ -97,45 +97,49 @@ regReply("message", function (event) {
 regReply("message", function (event) {
     if (event.message.type == "text" && event.message.text.indexOf("游戏") >= 0) {
         const echo = {
-            "type": "bubble",
-            "header": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": "萌犬变变💩"
-                    }
-                ]
-            },
-            "hero": {
-                "type": "image",
-                "url": "https://static.6699.jp/mp/image/1559188833011_T1QFXxYtVb9eoFzx.png",
-                "size": "full",
-                "aspectRatio": "20:13",
-                "aspectMode": "cover",
-                "action": {
-                    "type": "uri",
-                    "uri": "http://linecorp.com/"
-                }
-            },
-            "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": "sm",
-                "contents": [
-                    {
-                        "type": "button",
-                        "style": "link",
-                        "height": "sm",
-                        "action": {
-                            "type": "uri",
-                            "label": "开始玩！",
-                            "uri": "line://app/1579130869-1bQDdkGB"
+            type: "flex",
+            altText: "萌犬...",
+            contents: {
+                "type": "bubble",
+                "header": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "萌犬变变💩"
                         }
+                    ]
+                },
+                "hero": {
+                    "type": "image",
+                    "url": "https://static.6699.jp/mp/image/1559188833011_T1QFXxYtVb9eoFzx.png",
+                    "size": "full",
+                    "aspectRatio": "20:13",
+                    "aspectMode": "cover",
+                    "action": {
+                        "type": "uri",
+                        "uri": "http://linecorp.com/"
                     }
-                ],
-                "flex": 0
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "style": "link",
+                            "height": "sm",
+                            "action": {
+                                "type": "uri",
+                                "label": "开始玩！",
+                                "uri": "line://app/1579130869-1bQDdkGB"
+                            }
+                        }
+                    ],
+                    "flex": 0
+                }
             }
         };
         console.log("发送游戏消息");
@@ -145,13 +149,13 @@ regReply("message", function (event) {
 });
 
 regReply("message", function (event) {
-    if (event.message.type == "text" && event.message.text.indexOf("在哪") >= 0) {
+    if (event.message.type == "text" && (event.message.text.indexOf("位置") >= 0 || event.message.text.indexOf("在哪") >= 0)) {
         const echo = {
             "type": "location",
-            "title": "my location",
-            "address": "〒150-0002 東京都渋谷区渋谷２丁目２１−１",
-            "latitude": 35.65910807942215,
-            "longitude": 139.70372892916203
+            "title": "位置",
+            "address": "这是我的位置，欢迎光临哦~",
+            "latitude": 38.862505,
+            "longitude": 121.531048
         };
         return client.replyMessage(event.replyToken, echo);
     }
