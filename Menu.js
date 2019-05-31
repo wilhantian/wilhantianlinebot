@@ -1,6 +1,4 @@
 module.exports = class Menu{
-    client = null;
-
     constructor(client){
         this.client = client;
 
