@@ -324,13 +324,13 @@ function createGameListMsg(title, img, url){
                       "contents": [
                         {
                           "type": "text",
-                          "text": "Closing the distance",
+                          "text": title,
                           "size": "md",
                           "color": "#000000"
                         },
                         {
                           "type": "text",
-                          "text": "Closing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distance",
+                          "text": title + "..........",
                           "wrap": false,
                           "size": "sm",
                           "color": "#999999"
@@ -362,13 +362,13 @@ function createGameListMsg(title, img, url){
                       "contents": [
                         {
                           "type": "text",
-                          "text": "Closing the distance",
+                          "text": title,
                           "size": "md",
                           "color": "#000000"
                         },
                         {
                           "type": "text",
-                          "text": "Closing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distance",
+                          "text": title + "..........",
                           "wrap": false,
                           "size": "sm",
                           "color": "#999999"
@@ -400,13 +400,13 @@ function createGameListMsg(title, img, url){
                       "contents": [
                         {
                           "type": "text",
-                          "text": "Closing the distance",
+                          "text": title,
                           "size": "md",
                           "color": "#000000"
                         },
                         {
                           "type": "text",
-                          "text": "Closing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distance",
+                          "text": title + "..........",
                           "wrap": false,
                           "size": "sm",
                           "color": "#999999"
