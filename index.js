@@ -74,8 +74,23 @@ function handleReply(event) {
 
 ///////////////////////////////////////////////////////////////////////
 regReply("message", function (event) {
-    if (event.message.type == "text" && event.message.text.indexOf("110") >= 0) {
-        const echo = { type: 'text', text: "110？你要报警吗？" };
+    if (event.message.type == "text" && event.message.text == ("玩游戏")) {
+        client.linkRichMenuToUser(event.source.userId, menu.gameMenuId);
+        return true;
+    }
+    return null;
+});
+regReply("message", function (event) {
+    if (event.message.type == "text" && event.message.text == ("主菜单")) {
+        client.linkRichMenuToUser(event.source.userId, menu.defaultMenuId);
+        return true;
+    }
+    return null;
+});
+
+regReply("message", function (event) {
+    if (event.message.type == "text" && event.message.text.indexOf("帮助") == 0) {
+        const echo = { type: 'text', text: "我就不帮助你" };
         return client.replyMessage(event.replyToken, echo);
     }
     return null;

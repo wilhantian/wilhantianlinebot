@@ -4,6 +4,9 @@ module.exports = class Menu{
     constructor(client){
         this.client = client;
 
+        this.defaultMenuId = null;
+        this.gameMenuId = null;
+
         this.client.getRichMenuList().then((res)=>{
             console.log("获取菜单列表:", res);
             for(var i=0; i<res.length; i++){
@@ -21,6 +24,7 @@ module.exports = class Menu{
 
             // this.initGamePad();
             this.initDefMenu();
+            this.initGameMenu();
         }, (err)=>{
             console.error("获取菜单列表异常", err)
         }).catch((err)=>{console.error("获取菜单列表错误", err)});
@@ -34,8 +38,8 @@ module.exports = class Menu{
                 height: 843
             },
             selected: true,
-            name: "手柄菜单",
-            chatBarText: "手柄",
+            name: "默认菜单",
+            chatBarText: "默认",
             areas: [
                 {
                     bounds: {
@@ -66,6 +70,7 @@ module.exports = class Menu{
             ]
         }).then((id)=>{
             console.log("创建菜单完成", id);
+            this.defaultMenuId = id;//保存id
             this.client.setRichMenuImage(id, fs.readFileSync("./img/默认.png"), "image/png")
                 .then((res)=>{
                     console.log("上传图片ok", res);
@@ -92,59 +97,60 @@ module.exports = class Menu{
         });
     }
 
-    initGamePad(){ 
+    initGameMenu(){
         this.client.createRichMenu({
             size: {
                 width: 2500,
                 height: 843
             },
             selected: true,
-            name: "手柄菜单",
-            chatBarText: "手柄",
+            name: "主菜单",
+            chatBarText: "主菜单",
             areas: [
                 {
                     bounds: {
-                        x: 327,
-                        y: 33,
-                        width: 772,
-                        height: 772
+                        x: 0,
+                        y: 0,
+                        width: 836,
+                        height: 843
                     },
                     action: {
                         type: "message",
-                        label: "方向键",
-                        text: "方向键"
+                        label: "主菜单",
+                        text: "主菜单"
                     }
                 },
                 {
                     bounds: {
-                        x: 1630,
-                        y: 303,
-                        width: 631,
-                        height: 273
+                        x: 836,
+                        y: 0,
+                        width: 836,
+                        height: 843
                     },
                     action: {
                         type: "message",
-                        label: "功能键",
-                        text: "功能键"
+                        label: "选类型",
+                        text: "选类型"
                     }
                 },
                 {
                     bounds: {
-                        x: 1098,
-                        y: 666,
-                        width: 534,
-                        height: 138
+                        x: 1672,
+                        y: 0,
+                        width: 828,
+                        height: 843
                     },
                     action: {
                         type: "message",
-                        label: "切换键盘",
-                        text: "切换键盘"
+                        label: "随机挑",
+                        text: "随机挑"
                     }
                 }
             ]
         }).then((id)=>{
             console.log("创建菜单完成", id);
-            this.client.setRichMenuImage(id, fs.readFileSync("./img/gamepad.jpeg"), "image/jpeg")
+            this.gameMenuId = id;//保存id
+            this.client.setRichMenuImage(id, fs.readFileSync("./img/游戏.png"), "image/png")
                 .then((res)=>{
                     console.log("上传图片ok", res);
                     //设置为默认菜单
