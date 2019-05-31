@@ -151,7 +151,7 @@ regReply("message", function (event) {
     if (event.message.type == "text" && event.message.text == ("模拟经营类")) {
         const uri = "line://app/1579130869-Dpk1R65p";
         const echo = createGameMsg("萌犬💩💩💩", "https://static.6699.jp/mp/image/1559188833011_T1QFXxYtVb9eoFzx.png", uri);
-        return client.replyMessage(event.replyToken, echo);
+        return client.replyMessage(event.replyToken, [echo, echo, echo, echo, echo]);
     }
     return null;
 });
