@@ -141,9 +141,9 @@ module.exports = class Menu{
                         height: 843
                     },
                     action: {
-                        type: "message",
-                        label: "随机挑",
-                        text: "随机挑"
+                        type: "uri",
+                        label: "去平台",
+                        uri: "line://app/1579130869-8AgDwr4m"
                     }
                 }
             ]

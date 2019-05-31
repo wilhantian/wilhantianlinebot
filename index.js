@@ -90,6 +90,9 @@ regReply("message", function (event) {
 regReply("message", function (event) {
     if (event.message.type == "text" && event.message.text == ("选类型")) {
         const echo = {
+            type: "flex",
+            altText: "选类型",
+            contents:{
             "type": "bubble",
             "body":{
               "type": "box",
@@ -128,7 +131,7 @@ regReply("message", function (event) {
                 }
               ],
               "flex": 0
-            }
+            }}
         }
         return client.replyMessage(event.replyToken, echo);
     }
@@ -160,6 +163,7 @@ regReply("message", function (event) {
     }
     return null;
 });
+
 
 regReply("message", function (event) {
     if (event.message.type == "text" && event.message.text.indexOf("几点") >= 0) {
