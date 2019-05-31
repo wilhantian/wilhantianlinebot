@@ -166,6 +166,7 @@ regReply("message", function (event) {
 
 regReply("message", function (event) {
     if (event.message.type == "text" && event.message.text == ("换一批")) {
+        const uri = "line://app/1579130869-Dpk1R65p";
         const echo = createGameListMsg("萌狗💩💩💩", "https://static.6699.jp/mp/image/1559188833011_T1QFXxYtVb9eoFzx.png", uri);
         return client.replyMessage(event.replyToken, echo);
     }
