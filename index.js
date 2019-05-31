@@ -2,6 +2,7 @@
 
 const line = require('@line/bot-sdk');
 const express = require('express');
+const Menu = require("./Menu");
 
 // LINE配置
 const config = {
@@ -13,6 +14,7 @@ const config = {
 const client = new line.Client(config);
 
 const app = express();
+const menu = new Menu(client);
 
 app.all('/', (req, res) => {
     res.send(JSON.stringify({
@@ -41,6 +43,12 @@ function handleEvent(event) {
         client.replyMessage(event.replyToken, {
             type: 'text',
             text: JSON.stringify(res)
+        }).catch((err)=>{
+            console.error("发送用户信息错误", err);
+        });
+        client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: "我是接下来的消息"
         }).catch((err)=>{
             console.error("发送用户信息错误", err);
         });
