@@ -295,161 +295,143 @@ function createGameListMsg(title, img, url){
         type: "flex",
         altText: title,
         contents: {
-            type: "carousel",
-            contents: [
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "md",
+              "contents": [
                 {
-                    "type": "bubble",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": title
-                            }
-                        ]
+                  "type": "box",
+                  "layout": "horizontal",
+                  "spacing": "md",
+                  "action": {
+                    "type": "uri",
+                    "label": title,
+                    "uri": url
+                  },
+                  "contents": [
+                    {
+                      "type": "image",
+                      "url": img,
+                      "size": "sm",
+                      "flex": 0
                     },
-                    "hero": {
-                        "type": "image",
-                        "url": img,
-                        "size": "full",
-                        "aspectRatio": "20:13",
-                        "aspectMode": "cover",
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "spacing": "sm",
-                        "contents": [
-                            {
-                                "type": "button",
-                                "style": "link",
-                                "height": "sm",
-                                "action": {
-                                    "type": "uri",
-                                    "label": "开始玩！",
-                                    "uri": url
-                                }
-                            }
-                        ],
-                        "flex": 0
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "flex": 1,
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Closing the distance",
+                          "size": "md",
+                          "color": "#000000"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Closing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distance",
+                          "wrap": false,
+                          "size": "sm",
+                          "color": "#999999"
+                        }
+                      ]
                     }
+                  ]
                 },
                 {
-                    "type": "bubble",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": title
-                            }
-                        ]
+                  "type": "box",
+                  "layout": "horizontal",
+                  "spacing": "md",
+                  "action": {
+                    "type": "uri",
+                    "label": title,
+                    "uri": url
+                  },
+                  "contents": [
+                    {
+                      "type": "image",
+                      "url": img,
+                      "size": "sm",
+                      "flex": 0
                     },
-                    "hero": {
-                        "type": "image",
-                        "url": img,
-                        "size": "full",
-                        "aspectRatio": "20:13",
-                        "aspectMode": "cover",
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "spacing": "sm",
-                        "contents": [
-                            {
-                                "type": "button",
-                                "style": "link",
-                                "height": "sm",
-                                "action": {
-                                    "type": "uri",
-                                    "label": "开始玩！",
-                                    "uri": url
-                                }
-                            }
-                        ],
-                        "flex": 0
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "flex": 1,
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Closing the distance",
+                          "size": "md",
+                          "color": "#000000"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Closing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distance",
+                          "wrap": false,
+                          "size": "sm",
+                          "color": "#999999"
+                        }
+                      ]
                     }
+                  ]
                 },
                 {
-                    "type": "bubble",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": title
-                            }
-                        ]
+                  "type": "box",
+                  "layout": "horizontal",
+                  "spacing": "md",
+                  "action": {
+                    "type": "uri",
+                    "label": title,
+                    "uri": url
+                  },
+                  "contents": [
+                    {
+                      "type": "image",
+                      "url": img,
+                      "size": "sm",
+                      "flex": 0
                     },
-                    "hero": {
-                        "type": "image",
-                        "url": img,
-                        "size": "full",
-                        "aspectRatio": "20:13",
-                        "aspectMode": "cover",
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "spacing": "sm",
-                        "contents": [
-                            {
-                                "type": "button",
-                                "style": "link",
-                                "height": "sm",
-                                "action": {
-                                    "type": "uri",
-                                    "label": "开始玩！",
-                                    "uri": url
-                                }
-                            }
-                        ],
-                        "flex": 0
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "flex": 1,
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "Closing the distance",
+                          "size": "md",
+                          "color": "#000000"
+                        },
+                        {
+                          "type": "text",
+                          "text": "Closing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distanceClosing the distance",
+                          "wrap": false,
+                          "size": "sm",
+                          "color": "#999999"
+                        }
+                      ]
                     }
+                  ]
                 },
                 {
-                    "type": "bubble",
-                    "header": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": title
-                            }
-                        ]
-                    },
-                    "hero": {
-                        "type": "image",
-                        "url": img,
-                        "size": "full",
-                        "aspectRatio": "20:13",
-                        "aspectMode": "cover",
-                    },
-                    "footer": {
-                        "type": "box",
-                        "layout": "vertical",
-                        "spacing": "sm",
-                        "contents": [
-                            {
-                                "type": "button",
-                                "style": "link",
-                                "height": "sm",
-                                "action": {
-                                    "type": "uri",
-                                    "label": "开始玩！",
-                                    "uri": url
-                                }
-                            }
-                        ],
-                        "flex": 0
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "button",
+                      "style": "link",
+                      "action": {
+                        "type": "message",
+                        "label": "换一批",
+                        "text": "换一批"
+                      }
                     }
+                  ]
                 }
-            ]
-        }
+              ]
+            }
+          }
     };
 }
