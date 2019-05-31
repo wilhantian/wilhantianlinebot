@@ -4,16 +4,29 @@ module.exports = class Menu{
     constructor(client){
         this.client = client;
 
-        this.initGamePad();
+        this.client.getRichMenuList().then((res)=>{
+            console.log("获取菜单列表:", res);
+            for(var i=0; i<res.length; i++){
+                var richMenuId = res[i].richMenuId;
+                console.log("删除", richMenuId);
+                this.client.deleteRichMenu(richMenuId)
+                    .then((res)=>{
+                        console.log("删除成功", res)
+                    }, (err)=>{
+                        console.warn("删除失败", err)
+                    }).catch((err)=>{
+                        console.error("删除错误", err)
+                    });
+            }
+
+            this.initGamePad();
+        }, (err)=>{
+            console.error("获取菜单列表异常", err)
+        }).catch((err)=>{console.error("获取菜单列表错误", err)});
+
     }
 
     initGamePad(){ 
-        // this.client.getRichMenuList().then((res)=>{
-        //     console.log("获取菜单列表:", res)
-        // }, (err)=>{
-        //     console.error("获取菜单列表异常", err)
-        // }).catch((err)=>{console.error("获取菜单列表错误", err)});
-
         this.client.createRichMenu({
             size: {
                 width: 2500,
@@ -65,7 +78,11 @@ module.exports = class Menu{
             ]
         }).then((id)=>{
             console.log("创建菜单完成", id);
-            this.client.setRichMenuImage(id, fs.readFileSync("./img/gamepad.png"), "image/png");
+            this.client.setRichMenuImage(id, fs.readFileSync("./img/gamepad.png"), "image/png")
+                .then((res)=>{console.log("上传图片ok", res)}, (err)=>{console.warn("上传图片失败", err)})
+                .catch((err)=>{
+                    console.error("上传图片错误", err);
+                });
         }, (err)=>{
             console.warn("创建菜单失败", err);
         }).catch((err)=>{
