@@ -49,9 +49,9 @@ module.exports = class Menu{
                         height: 843
                     },
                     action: {
-                        type: "message",
+                        type: "uri",
                         label: "帮助",
-                        text: "帮助"
+                        uri: "line://app/1579130869-1bQDdkGB"
                     }
                 },
                 {
