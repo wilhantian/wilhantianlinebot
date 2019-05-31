@@ -87,6 +87,58 @@ regReply("message", function (event) {
     }
     return null;
 });
+regReply("message", function (event) {
+    if (event.message.type == "text" && event.message.text == ("选类型")) {
+        const echo = {
+            type: 'flex',
+            altText: '选类型',
+            contents: {
+                "type": "bubble",
+                "body":{
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "游戏分类"
+                    }
+                  ]
+                },
+                "footer": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "spacing": "sm",
+                  "contents": [
+                    {
+                      "type": "button",
+                      "style": "primary",
+                      "height": "sm",
+                      "action": {
+                        "type": "message",
+                        "label": "模拟经营",
+                        "text": "模拟经营"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "style": "primary",
+                      "height": "sm",
+                      "action": {
+                        "type": "message",
+                        "label": "模拟经营",
+                        "text": "模拟经营"
+                      }
+                    }
+                  ],
+                  "flex": 0
+                }
+              }
+        }
+        return client.replyMessage(event.replyToken, echo);
+    }
+    return null;
+});
+
 
 regReply("message", function (event) {
     if (event.message.type == "text" && event.message.text.indexOf("帮助") == 0) {
