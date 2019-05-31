@@ -41,6 +41,8 @@ function handleEvent(event) {
         client.replyMessage(event.replyToken, {
             type: 'text',
             text: JSON.stringify(res)
+        }).catch((err)=>{
+            console.error("发送用户信息错误", err);
         });
     }, ()=>{});
     
