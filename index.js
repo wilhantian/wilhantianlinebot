@@ -38,21 +38,6 @@ app.all('/callback', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
     console.log("收到消息:", event, event.source.userId);
-    client.getProfile(event.source.userId).then((res)=>{
-        console.log("获取用户信息", res);
-        client.replyMessage(event.replyToken, {
-            type: 'text',
-            text: JSON.stringify(res)
-        }).catch((err)=>{
-            console.error("发送用户信息错误", err);
-        });
-        client.replyMessage(event.replyToken, {
-            type: 'text',
-            text: "我是接下来的消息"
-        }).catch((err)=>{
-            console.error("发送用户信息错误", err);
-        });
-    }, ()=>{});
     
     return handleReply(event);
 }
@@ -62,6 +47,7 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`listening on ${port}`);
 });
+
 
 ///////////////////////////////////////////////////////////////////////
 var msgDict = {};
