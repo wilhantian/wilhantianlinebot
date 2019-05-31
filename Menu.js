@@ -19,11 +19,77 @@ module.exports = class Menu{
                     });
             }
 
-            this.initGamePad();
+            // this.initGamePad();
+            this.initDefMenu();
         }, (err)=>{
             console.error("获取菜单列表异常", err)
         }).catch((err)=>{console.error("获取菜单列表错误", err)});
 
+    }
+
+    initDefMenu(){
+        this.client.createRichMenu({
+            size: {
+                width: 2500,
+                height: 843
+            },
+            selected: true,
+            name: "手柄菜单",
+            chatBarText: "手柄",
+            areas: [
+                {
+                    bounds: {
+                        x: 0,
+                        y: 0,
+                        width: 843,
+                        height: 843
+                    },
+                    action: {
+                        type: "message",
+                        label: "帮助",
+                        text: "帮助"
+                    }
+                },
+                {
+                    bounds: {
+                        x: 856,
+                        y: 0,
+                        width: 1620,
+                        height: 843
+                    },
+                    action: {
+                        type: "message",
+                        label: "玩游戏",
+                        text: "玩游戏"
+                    }
+                }
+            ]
+        }).then((id)=>{
+            console.log("创建菜单完成", id);
+            this.client.setRichMenuImage(id, fs.readFileSync("./img/默认.png"), "image/png")
+                .then((res)=>{
+                    console.log("上传图片ok", res);
+                    //设置为默认菜单
+                    this.client.setDefaultRichMenu(id)
+                        .then((res)=>{
+                            console.error("设置默认菜单成功", res);
+                        }, (err)=>{
+                            console.warn("设置默认菜单失败", err);
+                        })
+                        .catch((err)=>{
+                            console.error("设置默认菜单错误", err);
+                        })
+                }, (err)=>{
+                    console.warn("上传图片失败", err)
+                })
+                .catch((err)=>{
+                    console.error("上传图片错误", err);
+                });
+        }, (err)=>{
+            console.warn("创建菜单失败", err);
+        }).catch((err)=>{
+            console.error("创建菜单错误", err);
+        });
     }
 
     initGamePad(){ 
