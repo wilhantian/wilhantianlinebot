@@ -150,8 +150,8 @@ regReply("message", function (event) {
 regReply("message", function (event) {
     if (event.message.type == "text" && event.message.text == ("模拟经营类")) {
         const uri = "line://app/1579130869-Dpk1R65p";
-        const echo = createGameMsg("萌犬💩💩💩", "https://static.6699.jp/mp/image/1559188833011_T1QFXxYtVb9eoFzx.png", uri);
-        return client.replyMessage(event.replyToken, [echo, echo, echo, echo, echo]);
+        const echo = createGameListMsg("萌犬💩💩💩", "https://static.6699.jp/mp/image/1559188833011_T1QFXxYtVb9eoFzx.png", uri);
+        return client.replyMessage(event.replyToken, echo);
     }
     return null;
 });
@@ -286,6 +286,170 @@ function createGameMsg(title, img, url){
                 ],
                 "flex": 0
             }
+        }
+    };
+}
+
+function createGameListMsg(title, img, url){
+    return {
+        type: "flex",
+        altText: title,
+        contents: {
+            type: "carousel",
+            contents: [
+                {
+                    "type": "bubble",
+                    "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": title
+                            }
+                        ]
+                    },
+                    "hero": {
+                        "type": "image",
+                        "url": img,
+                        "size": "full",
+                        "aspectRatio": "20:13",
+                        "aspectMode": "cover",
+                    },
+                    "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "style": "link",
+                                "height": "sm",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "开始玩！",
+                                    "uri": url
+                                }
+                            }
+                        ],
+                        "flex": 0
+                    }
+                },
+                {
+                    "type": "bubble",
+                    "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": title
+                            }
+                        ]
+                    },
+                    "hero": {
+                        "type": "image",
+                        "url": img,
+                        "size": "full",
+                        "aspectRatio": "20:13",
+                        "aspectMode": "cover",
+                    },
+                    "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "style": "link",
+                                "height": "sm",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "开始玩！",
+                                    "uri": url
+                                }
+                            }
+                        ],
+                        "flex": 0
+                    }
+                },
+                {
+                    "type": "bubble",
+                    "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": title
+                            }
+                        ]
+                    },
+                    "hero": {
+                        "type": "image",
+                        "url": img,
+                        "size": "full",
+                        "aspectRatio": "20:13",
+                        "aspectMode": "cover",
+                    },
+                    "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "style": "link",
+                                "height": "sm",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "开始玩！",
+                                    "uri": url
+                                }
+                            }
+                        ],
+                        "flex": 0
+                    }
+                },
+                {
+                    "type": "bubble",
+                    "header": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": title
+                            }
+                        ]
+                    },
+                    "hero": {
+                        "type": "image",
+                        "url": img,
+                        "size": "full",
+                        "aspectRatio": "20:13",
+                        "aspectMode": "cover",
+                    },
+                    "footer": {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "sm",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "style": "link",
+                                "height": "sm",
+                                "action": {
+                                    "type": "uri",
+                                    "label": "开始玩！",
+                                    "uri": url
+                                }
+                            }
+                        ],
+                        "flex": 0
+                    }
+                }
+            ]
         }
     };
 }
