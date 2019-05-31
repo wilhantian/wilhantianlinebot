@@ -24,43 +24,43 @@ module.exports = class Menu{
             chatBarText: "手柄",
             areas: [
                 {
-                    bounds: [
-                        {
-                            x: 327,
-                            y: 33,
-                            width: 772,
-                            height: 772
-                        },
-                        {
-                            x: 1630,
-                            y: 303,
-                            width: 631,
-                            height: 273
-                        },
-                        {
-                            x: 1098,
-                            y: 666,
-                            width: 534,
-                            height: 138
-                        }
-                    ],
-                    action: [
-                        {
-                            type: "message",
-                            label: "方向键",
-                            text: "方向键"
-                        },
-                        {
-                            type: "message",
-                            label: "功能键",
-                            text: "功能键"
-                        },
-                        {
-                            type: "message",
-                            label: "切换键盘",
-                            text: "切换键盘"
-                        }
-                    ]
+                    bounds: {
+                        x: 327,
+                        y: 33,
+                        width: 772,
+                        height: 772
+                    },
+                    action: {
+                        type: "message",
+                        label: "方向键",
+                        text: "方向键"
+                    }
+                },
+                {
+                    bounds: {
+                        x: 1630,
+                        y: 303,
+                        width: 631,
+                        height: 273
+                    },
+                    action: {
+                        type: "message",
+                        label: "功能键",
+                        text: "功能键"
+                    }
+                },
+                {
+                    bounds: {
+                        x: 1098,
+                        y: 666,
+                        width: 534,
+                        height: 138
+                    },
+                    action: {
+                        type: "message",
+                        label: "切换键盘",
+                        text: "切换键盘"
+                    }
                 }
             ]
         }).then((id)=>{
