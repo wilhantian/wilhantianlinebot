@@ -79,7 +79,21 @@ module.exports = class Menu{
         }).then((id)=>{
             console.log("创建菜单完成", id);
             this.client.setRichMenuImage(id, fs.readFileSync("./img/gamepad.jpeg"), "image/jpeg")
-                .then((res)=>{console.log("上传图片ok", res)}, (err)=>{console.warn("上传图片失败", err)})
+                .then((res)=>{
+                    console.log("上传图片ok", res);
+                    //设置为默认菜单
+                    this.client.setDefaultRichMenu(id)
+                        .then((res)=>{
+                            console.error("设置默认菜单成功", res);
+                        }, (err)=>{
+                            console.warn("设置默认菜单失败", err);
+                        })
+                        .catch((err)=>{
+                            console.error("设置默认菜单错误", err);
+                        })
+                }, (err)=>{
+                    console.warn("上传图片失败", err)
+                })
                 .catch((err)=>{
                     console.error("上传图片错误", err);
                 });
