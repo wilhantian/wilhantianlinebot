@@ -78,7 +78,7 @@ module.exports = class Menu{
             ]
         }).then((id)=>{
             console.log("创建菜单完成", id);
-            this.client.setRichMenuImage(id, fs.readFileSync("./img/gamepad.png"), "image/png")
+            this.client.setRichMenuImage(id, fs.readFileSync("./img/gamepad.jpeg"), "image/jpeg")
                 .then((res)=>{console.log("上传图片ok", res)}, (err)=>{console.warn("上传图片失败", err)})
                 .catch((err)=>{
                     console.error("上传图片错误", err);
