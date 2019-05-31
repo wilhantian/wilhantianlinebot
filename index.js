@@ -90,49 +90,45 @@ regReply("message", function (event) {
 regReply("message", function (event) {
     if (event.message.type == "text" && event.message.text == ("选类型")) {
         const echo = {
-            type: 'flex',
-            altText: '选类型',
-            contents: {
-                "type": "bubble",
-                "body":{
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "游戏分类"
-                    }
-                  ]
-                },
-                "footer": {
-                  "type": "box",
-                  "layout": "vertical",
-                  "spacing": "sm",
-                  "contents": [
-                    {
-                      "type": "button",
-                      "style": "primary",
-                      "height": "sm",
-                      "action": {
-                        "type": "message",
-                        "label": "模拟经营",
-                        "text": "模拟经营"
-                      }
-                    },
-                    {
-                      "type": "button",
-                      "style": "primary",
-                      "height": "sm",
-                      "action": {
-                        "type": "message",
-                        "label": "模拟经营",
-                        "text": "模拟经营"
-                      }
-                    }
-                  ],
-                  "flex": 0
+            "type": "bubble",
+            "body":{
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "游戏分类"
                 }
-              }
+              ]
+            },
+            "footer": {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "height": "sm",
+                  "action": {
+                    "type": "message",
+                    "label": "模拟经营类",
+                    "text": "模拟经营类"
+                  }
+                },
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "height": "sm",
+                  "action": {
+                    "type": "message",
+                    "label": "休闲类",
+                    "text": "休闲类"
+                  }
+                }
+              ],
+              "flex": 0
+            }
         }
         return client.replyMessage(event.replyToken, echo);
     }
@@ -141,7 +137,7 @@ regReply("message", function (event) {
 
 
 regReply("message", function (event) {
-    if (event.message.type == "text" && event.message.text.indexOf("帮助") == 0) {
+    if (event.message.type == "text" && event.message.text == ("帮助")) {
         const echo = { type: 'text', text: "我就不帮助你" };
         return client.replyMessage(event.replyToken, echo);
     }
@@ -149,8 +145,17 @@ regReply("message", function (event) {
 });
 
 regReply("message", function (event) {
-    if (event.message.type == "text" && event.message.text.indexOf("傻") >= 0) {
-        const echo = { type: 'text', text: "你再骂一句试试？" };
+    if (event.message.type == "text" && event.message.text == ("模拟经营类")) {
+        const uri = "line://app/1579130869-Dpk1R65p";
+        const echo = createGameMsg("萌犬💩💩💩", "https://static.6699.jp/mp/image/1559188833011_T1QFXxYtVb9eoFzx.png", uri);
+        return client.replyMessage(event.replyToken, echo);
+    }
+    return null;
+});
+regReply("message", function (event) {
+    if (event.message.type == "text" && event.message.text == ("休闲类")) {
+        const uri = "line://app/1579130869-pAZDoX4A";
+        const echo = createGameMsg("⚽️足球⚽️", "https://static.pk123.jp/gameInfo/FootBall/FootBall1.jpg", uri);
         return client.replyMessage(event.replyToken, echo);
     }
     return null;
@@ -231,3 +236,52 @@ regReply("message", function (event) {
     }
     return null;
 });
+
+
+
+
+//---------------------------------------------------------
+function createGameMsg(title, img, url){
+    return {
+        type: "flex",
+        altText: title,
+        contents: {
+            "type": "bubble",
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": title
+                    }
+                ]
+            },
+            "hero": {
+                "type": "image",
+                "url": img,
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+            },
+            "footer": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "sm",
+                "contents": [
+                    {
+                        "type": "button",
+                        "style": "link",
+                        "height": "sm",
+                        "action": {
+                            "type": "uri",
+                            "label": "开始玩！",
+                            "uri": url
+                        }
+                    }
+                ],
+                "flex": 0
+            }
+        }
+    };
+}
