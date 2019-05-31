@@ -35,7 +35,15 @@ app.all('/callback', line.middleware(config), (req, res) => {
 
 // event handler
 function handleEvent(event) {
-    console.log("收到消息:", event)
+    console.log("收到消息:", event, event.source.userId);
+    client.getProfile(event.source.userId).then((res)=>{
+        console.log("获取用户信息", res);
+        client.replyMessage(event.replyToken, {
+            type: 'text',
+            text: JSON.stringify(res)
+        });
+    }, ()=>{});
+    
     return handleReply(event);
 }
 
