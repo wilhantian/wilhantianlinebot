@@ -39,7 +39,7 @@ function init() {
         Line.replyMessage(token, echo);
     });
 
-    MsgMgr.registerMsgReply("6699社区", function (token, msg, userId, time) {
+    MsgMgr.registerMsgReply("社区", function (token, msg, userId, time) {
         Line.replyMessage(token, {
             type: "text",
             text: "TODO"

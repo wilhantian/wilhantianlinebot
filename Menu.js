@@ -1,18 +1,17 @@
 const fs = require("fs");
+const Line = require("./Line");
 
-module.exports = class Menu{
-    constructor(client){
-        this.client = client;
-
-        this.defaultMenuId = null;
+class Menu{
+    constructor(){
+        this.gameMenuList = [];
         this.gameMenuId = null;
 
-        this.client.getRichMenuList().then((res)=>{
+        Line.getRichMenuList().then((res)=>{
             console.log("获取菜单列表:", res);
             for(var i=0; i<res.length; i++){
                 var richMenuId = res[i].richMenuId;
                 console.log("删除", richMenuId);
-                this.client.deleteRichMenu(richMenuId)
+                Line.deleteRichMenu(richMenuId)
                     .then((res)=>{
                         console.log("删除成功", res)
                     }, (err)=>{
@@ -23,59 +22,92 @@ module.exports = class Menu{
             }
 
             // this.initGamePad();
-            this.initDefMenu();
-            this.initGameMenu();
+            this.initDefMenu("./img/richmenu-1.png", "line://app/1579130869-1bQDdkGB", true);
+            this.initDefMenu("./img/richmenu-2.png", "line://app/1579130869-1bQDdkGB");
+            // this.initGameMenu();
         }, (err)=>{
             console.error("获取菜单列表异常", err)
         }).catch((err)=>{console.error("获取菜单列表错误", err)});
 
+        // 1分钟切换一次菜单
+        setInterval(()=>{
+            this.randomSetDefMenu();
+        }, 1 * 60 * 1000);
     }
 
-    initDefMenu(){
-        this.client.createRichMenu({
+    //"line://app/1579130869-1bQDdkGB"
+    initDefMenu(imagePath, bannerURL, isDef){
+        Line.createRichMenu({
             size: {
                 width: 2500,
-                height: 843
+                height: 1686
             },
             selected: true,
-            name: "默认菜单",
+            name: "菜单",
             chatBarText: "默认",
             areas: [
                 {
                     bounds: {
                         x: 0,
                         y: 0,
-                        width: 843,
-                        height: 843
+                        width: 2500,
+                        height: 840
                     },
                     action: {
                         type: "uri",
-                        label: "帮助",
-                        uri: "line://app/1579130869-1bQDdkGB"
+                        label: "banner",
+                        uri: bannerURL
                     }
                 },
                 {
                     bounds: {
-                        x: 856,
-                        y: 0,
-                        width: 1620,
-                        height: 843
+                        x: 0,
+                        y: 840,
+                        width: 840,
+                        height: 846
                     },
                     action: {
                         type: "message",
-                        label: "玩游戏",
-                        text: "玩游戏"
+                        label: "推荐",
+                        text: "推荐"
+                    }
+                },
+                {
+                    bounds: {
+                        x: 840,
+                        y: 840,
+                        width: 820,
+                        height: 846
+                    },
+                    action: {
+                        type: "message",
+                        label: "6699",
+                        text: "6699"
+                    }
+                },
+                {
+                    bounds: {
+                        x: 1660,
+                        y: 840,
+                        width: 840,
+                        height: 846
+                    },
+                    action: {
+                        type: "message",
+                        label: "客服",
+                        text: "客服"
                     }
                 }
             ]
         }).then((id)=>{
             console.log("创建菜单完成", id);
-            this.defaultMenuId = id;//保存id
-            this.client.setRichMenuImage(id, fs.readFileSync("./img/默认.png"), "image/png")
+            this.gameMenuList.push(id);//保存id
+            Line.setRichMenuImage(id, fs.readFileSync(imagePath), "image/png")
                 .then((res)=>{
                     console.log("上传图片ok", res);
                     //设置为默认菜单
-                    this.client.setDefaultRichMenu(id)
+                    if(isDef){
+                        Line.setDefaultRichMenu(id)
                         .then((res)=>{
                             console.error("设置默认菜单成功", res);
                         }, (err)=>{
@@ -84,6 +116,7 @@ module.exports = class Menu{
                         .catch((err)=>{
                             console.error("设置默认菜单错误", err);
                         })
+                    }
                 }, (err)=>{
                     console.warn("上传图片失败", err)
                 })
@@ -98,7 +131,7 @@ module.exports = class Menu{
     }
 
     initGameMenu(){
-        this.client.createRichMenu({
+        Line.createRichMenu({
             size: {
                 width: 2500,
                 height: 843
@@ -150,7 +183,7 @@ module.exports = class Menu{
         }).then((id)=>{
             console.log("创建菜单完成", id);
             this.gameMenuId = id;//保存id
-            this.client.setRichMenuImage(id, fs.readFileSync("./img/游戏.png"), "image/png")
+            Line.setRichMenuImage(id, fs.readFileSync("./img/游戏.png"), "image/png")
                 .then((res)=>{
                     console.log("上传图片ok", res);
                 }, (err)=>{
@@ -165,4 +198,29 @@ module.exports = class Menu{
             console.error("创建菜单错误", err);
         });
     }
+
+    randomSetDefMenu(){
+        var list = this.gameMenuList.map((b)=>{
+            return b;
+        });
+
+        var list = list.sort(()=>{
+            return Math.random()<0.5 ? -1 : 1;
+        });
+
+        var id = list[0];
+        if(id){
+            Line.setDefaultRichMenu(id)
+            .then((res)=>{
+                console.error("设置默认菜单成功", res);
+            }, (err)=>{
+                console.warn("设置默认菜单失败", err);
+            })
+            .catch((err)=>{
+                console.error("设置默认菜单错误", err);
+            })
+        }
+    }
 }
+
+module.exports = new Menu();
