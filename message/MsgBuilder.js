@@ -67,6 +67,153 @@ function createFollowMsg(altText, links) {
     }
 }
 
+function createGameListMsg(title, img, url) {
+    return {
+        type: "flex",
+        altText: title,
+        contents: {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "spacing": "md",
+                        "action": {
+                            "type": "uri",
+                            "label": title,
+                            "uri": url
+                        },
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": img,
+                                "size": "sm",
+                                "flex": 0
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "flex": 1,
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": title,
+                                        "size": "md",
+                                        "color": "#000000"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": title + "..........",
+                                        "wrap": false,
+                                        "size": "sm",
+                                        "color": "#999999"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "spacing": "md",
+                        "action": {
+                            "type": "uri",
+                            "label": title,
+                            "uri": url
+                        },
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": img,
+                                "size": "sm",
+                                "flex": 0
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "flex": 1,
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": title,
+                                        "size": "md",
+                                        "color": "#000000"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": title + "..........",
+                                        "wrap": false,
+                                        "size": "sm",
+                                        "color": "#999999"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "spacing": "md",
+                        "action": {
+                            "type": "uri",
+                            "label": title,
+                            "uri": url
+                        },
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": img,
+                                "size": "sm",
+                                "flex": 0
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "flex": 1,
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": title,
+                                        "size": "md",
+                                        "color": "#000000"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": title + "..........",
+                                        "wrap": false,
+                                        "size": "sm",
+                                        "color": "#999999"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "button",
+                                "style": "link",
+                                "action": {
+                                    "type": "message",
+                                    "label": "换一批",
+                                    "text": "换一批"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    };
+}
+
 module.exports = {
-    createFollowMsg: createFollowMsg
+    createFollowMsg: createFollowMsg,
+    createGameListMsg: createGameListMsg,
 }

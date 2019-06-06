@@ -33,9 +33,16 @@ function init() {
         Line.replyMessage(token, echo);
     });
 
-    MsgMgr.registerMsgReply("fuck", function (token, msg, userId, time) {
+    MsgMgr.registerMsgReply("推荐", function (token, msg, userId, time) {
+        const uri = "line://app/1579130869-Dpk1R65p";
+        const echo = MsgBuilder.createGameListMsg("萌犬💩💩💩", "https://static.6699.jp/mp/image/1559188833011_T1QFXxYtVb9eoFzx.png", uri);
+        Line.replyMessage(token, echo);
+    });
+
+    MsgMgr.registerMsgReply("6699社区", function (token, msg, userId, time) {
         Line.replyMessage(token, {
-            type: 'text', text: "卧槽"
+            type: "text",
+            text: "TODO"
         });
     });
 }
