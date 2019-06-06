@@ -245,10 +245,10 @@ function createGameScrollListMsg(altText, links) {
     return {
         type: "flex",
         altText: altText,
-        contents: {
+        contents: [{
             "type": "carousel",
             "contents": contents
-        }
+        }]
     };
 }
 
