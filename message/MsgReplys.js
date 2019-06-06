@@ -34,12 +34,30 @@ function init() {
     });
 
     MsgMgr.registerMsgReply("推荐", function (token, msg, userId, time) {
-        const uri = "line://app/1579130869-Dpk1R65p";
-        const echo = MsgBuilder.createGameListMsg("萌犬💩💩💩", "https://static.6699.jp/mp/image/1559188833011_T1QFXxYtVb9eoFzx.png", uri);
+        const echo = MsgBuilder.createGameScrollListMsg("scroll", [
+            {
+                title: '萌犬变变变',
+                img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_1.png',
+                url: 'line://app/1579130869-Dpk1R65p',
+                desc: '挂机类',
+            },
+            {
+                title: '足球',
+                img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_2.png',
+                url: 'line://app/1579130869-pAZDoX4A',
+                desc: '动作类',
+            },
+            {
+                title: '萌犬变变变II',
+                img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_3.png',
+                url: 'line://app/1579130869-Dpk1R65p',
+                desc: '挂机类',
+            }
+        ]);
         Line.replyMessage(token, echo);
     });
 
-    MsgMgr.registerMsgReply("社区", function (token, msg, userId, time) {
+    MsgMgr.registerMsgReply("客服", function (token, msg, userId, time) {
         Line.replyMessage(token, {
             type: "text",
             text: "TODO"

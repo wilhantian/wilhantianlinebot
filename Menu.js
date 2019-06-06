@@ -31,10 +31,10 @@ class Menu{
             console.error("获取菜单列表异常", err)
         }).catch((err)=>{console.error("获取菜单列表错误", err)});
 
-        // 1分钟切换一次菜单
+        // 3分钟切换一次菜单
         setInterval(()=>{
             this.randomSetDefMenu();
-        }, 1 * 60 * 1000);
+        }, 3 * 60 * 1000);
     }
 
     //"line://app/1579130869-1bQDdkGB"
