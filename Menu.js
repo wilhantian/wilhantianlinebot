@@ -22,8 +22,8 @@ class Menu{
             }
 
             // this.initGamePad();
-            this.initDefMenu("./img/richmenu-1.png", "line://app/1579130869-1bQDdkGB", true);
-            this.initDefMenu("./img/richmenu-2.png", "line://app/1579130869-1bQDdkGB");
+            this.initDefMenu("./img/richmenu-1.png", "line://app/1579130869-Dpk1R65p", "line://app/1579130869-8AgDwr4m", true);
+            this.initDefMenu("./img/richmenu-2.png", "line://app/1579130869-pAZDoX4A", "line://app/1579130869-8AgDwr4m");
             // this.initGameMenu();
         }, (err)=>{
             console.error("获取菜单列表异常", err)
@@ -36,7 +36,7 @@ class Menu{
     }
 
     //"line://app/1579130869-1bQDdkGB"
-    initDefMenu(imagePath, bannerURL, isDef){
+    initDefMenu(imagePath, bannerURL, homeURL, isDef){
         Line.createRichMenu({
             size: {
                 width: 2500,
@@ -80,9 +80,9 @@ class Menu{
                         height: 846
                     },
                     action: {
-                        type: "message",
+                        type: "uri",
                         label: "6699",
-                        text: "6699"
+                        uri: homeURL
                     }
                 },
                 {
