@@ -24,7 +24,7 @@ class MsgMgr{
             return this.handleMsgReply(event);
         }
         if(event.type == "follow"){
-            return this.handleMsgReply(event);
+            return this.handleFollow(event);
         }
     }
 
