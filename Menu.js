@@ -5,7 +5,9 @@ class Menu{
     constructor(){
         this.gameMenuList = [];
         this.gameMenuId = null;
+    }
 
+    init(){
         Line.getRichMenuList().then((res)=>{
             console.log("获取菜单列表:", res);
             for(var i=0; i<res.length; i++){

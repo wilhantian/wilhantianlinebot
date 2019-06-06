@@ -9,8 +9,8 @@ const MsgMgr = require("./message/MsgMgr");
 const MsgReplys = require("./message/MsgReplys");
 
 const app = express();
-const menu = new Menu(client);
 
+Menu.init();
 MsgReplys.init();
 
 app.all('/', (req, res) => {
