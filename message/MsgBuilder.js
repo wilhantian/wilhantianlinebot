@@ -218,55 +218,36 @@ function createGameScrollListMsg(altText, links) {
     var contents = [];
     for (var i = 0; i < links.length; i++) {
         contents.push({
-            "type": "box",
-            "layout": "horizontal",
-            "spacing": "md",
+            "type": "bubble",
+            "hero": {
+                "type": "image",
+                "url": links[i].img,
+                "size": "full",
+                "aspectRatio": "1.9:1"
+            },
+            "body": {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": links[i].title
+                    }
+                ]
+            },
             "action": {
                 "type": "uri",
                 "label": links[i].title,
                 "uri": links[i].url
-            },
-            "contents": [
-                {
-                    "type": "image",
-                    "url": links[i].img,
-                    "size": "sm",
-                    "flex": 0
-                },
-                {
-                    "type": "box",
-                    "layout": "vertical",
-                    "flex": 1,
-                    "contents": [
-                        {
-                            "type": "text",
-                            "text": links[i].title,
-                            "size": "md",
-                            "color": "#000000"
-                        },
-                        {
-                            "type": "text",
-                            "text": links[i].desc,
-                            "wrap": false,
-                            "size": "sm",
-                            "color": "#999999"
-                        }
-                    ]
-                }
-            ]
+            }
         });
     }
     return {
         type: "flex",
         altText: altText,
         contents: {
-            "type": "bubble",
-            "body": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": "md",
-                "contents": contents
-            }
+            "type": "carousel",
+            "contents": contents
         }
     };
 }
