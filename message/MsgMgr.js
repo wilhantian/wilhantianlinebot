@@ -1,7 +1,14 @@
 class MsgMgr{
     constructor(){
         this.msgDict = {};
+        this.followCallback = undefined;
     }
+    
+    // 注册Follow
+    registerFollow(callback){
+        this.followCallback = callback;
+    }
+
 
     // 注册消息回复
     registerMsgReply(match, callback){
@@ -12,11 +19,26 @@ class MsgMgr{
         this.msgDict[match] = callback;
     }
 
+    handle(event){
+        if(event.type == "message" && event.message.type == "text"){//过滤文本消息
+            return this.handleMsgReply(event);
+        }
+        if(event.type == "follow"){
+            return this.handleMsgReply(event);
+        }
+    }
+
+    // 处理follow消息
+    handleFollow(event){
+        if(this.followCallback){
+            this.followCallback(event.replyToken, event.source.userId);
+            return true;
+        }
+        return false;
+    }
+
     // 处理消息回复
     handleMsgReply(event){
-        if(event.type != "message" || event.message.type != "text"){//过滤文本消息
-            return false;
-        }
         var inMsg = event.message.text;
         for(var match in this.msgDict){
             if(match == inMsg){
