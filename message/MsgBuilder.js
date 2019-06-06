@@ -243,9 +243,12 @@ function createGameScrollListMsg(altText, links) {
         });
     }
     return {
-        type: "carousel",
-        altText: altText,
-        contents: contents
+        type: "flex",
+        altText: title,
+        contents: {
+            type: "carousel",
+            contents: contents
+        }
     };
 }
 
