@@ -223,7 +223,12 @@ function createGameScrollListMsg(altText, links) {
                 "type": "image",
                 "url": links[i].img,
                 "size": "full",
-                "aspectRatio": "1.9:1"
+                "aspectRatio": "1.9:1",
+                "action": {
+                    "type": "uri",
+                    "label": links[i].title,
+                    "uri": links[i].url
+                }
             },
             "body": {
                 "type": "box",
@@ -233,13 +238,13 @@ function createGameScrollListMsg(altText, links) {
                         "type": "text",
                         "text": links[i].title
                     }
-                ]
+                ],
+                "action": {
+                    "type": "uri",
+                    "label": links[i].title,
+                    "uri": links[i].url
+                }
             },
-            "action": {
-                "type": "uri",
-                "label": links[i].title,
-                "uri": links[i].url
-            }
         });
     }
     return {
