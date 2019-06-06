@@ -1,20 +1,17 @@
 'use strict';
 
+const config = require("./config");
 const line = require('@line/bot-sdk');
 const express = require('express');
 const Menu = require("./Menu");
-
-// LINE配置
-const config = {
-    channelAccessToken: 'AojV3z6Gc9fVBrJ9Rp+XxesFOlx13rBI2exyURMRMfNvZ/QnpCzmishSbNZmnae4h3llcXgpeTuiCiW2+5OZmG6T5PRin0D+IW2awXui96BoMknBI3GWgSLprFFpx7Aj40zcN2cV9uowqi6BJ6Qxw1GUYhWQfeY8sLGRXgo3xvw=',
-    channelSecret: '5af26a49f07ea7bb0dc6aa0df047d9a7',
-};
-
-// LINE SDK client
-const client = new line.Client(config);
+const client = require("./Line");
+const MsgMgr = require("./message/MsgMgr");
+const MsgReplys = require("./message/MsgReplys");
 
 const app = express();
 const menu = new Menu(client);
+
+MsgReplys.init();
 
 app.all('/', (req, res) => {
     res.send(JSON.stringify({
@@ -24,7 +21,7 @@ app.all('/', (req, res) => {
 
 // register a webhook handler with middleware
 // about the middleware, please refer to doc
-app.all('/callback', line.middleware(config), (req, res) => {
+app.all('/callback', line.middleware(config.LineConfig), (req, res) => {
     Promise
         .all(req.body.events.map(handleEvent))
         .then((result) => res.json(result))
@@ -38,8 +35,8 @@ app.all('/callback', line.middleware(config), (req, res) => {
 // event handler
 function handleEvent(event) {
     console.log("收到消息:", event, event.source.userId);
-    
-    return handleReply(event);
+    MsgMgr.handleMsgReply(event);
+    // return handleReply(event);
 }
 
 // listen on port
