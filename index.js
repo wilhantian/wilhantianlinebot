@@ -7,15 +7,20 @@ const Menu = require("./Menu");
 const client = require("./Line");
 const MsgMgr = require("./message/MsgMgr");
 const MsgReplys = require("./message/MsgReplys");
+var bodyParser = require('body-parser');//解析,用req.body获取post参数
+	
 var http = require('http');
 var qs = require('querystring');
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(express.static('public'));
 
 Menu.init();
 MsgReplys.init();
 
-app.use(express.static('public'))
 
 app.all('/', (req, res) => {
 	res.send(JSON.stringify({
@@ -37,6 +42,7 @@ app.all('/callback', line.middleware(config.LineConfig), (req, res) => {
 });
 
 app.post('/auth', (request, response) => {
+	
 	var code = request.body.code;
 	var redirect_uri = request.body.redirect_uri;
 	var post_data = {

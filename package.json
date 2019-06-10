@@ -18,6 +18,7 @@
   "homepage": "https://github.com/wilhantian/wilhantianlinebot#readme",
   "dependencies": {
     "@line/bot-sdk": "^6.7.1",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1"
   }
 }
