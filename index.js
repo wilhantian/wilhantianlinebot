@@ -56,9 +56,10 @@ app.post('/auth', (request, response) => {
 	var content = qs.stringify(post_data);
 
 	var options = {
-		path: 'https://api.line.me/v2/oauth/accessToken',
-		// port: 443,
-		// path: '',
+		protocol: 'https',
+		hostname: 'api.line.me',
+		port: 443,
+		path: '/v2/oauth/accessToken',
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
