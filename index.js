@@ -84,6 +84,8 @@ app.post('/auth', (request, response) => {
 	// 将数据写入请求体
 	req.write(content);//注意这个地方  
 	req.end();
+
+	console.log(content);
 });
 
 // event handler
