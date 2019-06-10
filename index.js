@@ -57,6 +57,7 @@ app.post('/auth', (request, response) => {
 
 	var options = {
 		hostname: 'https://api.line.me',
+		port: 443,
 		path: '/v2/oauth/accessToken',
 		method: 'POST',
 		headers: {
