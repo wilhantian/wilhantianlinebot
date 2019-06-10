@@ -79,7 +79,7 @@ app.post('/auth', (request, response) => {
 
 			// 获取用户信息
 			options.method = 'GET';
-			options.path = "v2/profile";
+			options.path = "/v2/profile";
 			options.headers = {
 				Authorization: 'Bearer ' + access_token
 			};
