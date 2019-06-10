@@ -64,6 +64,7 @@ app.post('/auth', (request, response) => {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded',
+			'Content-Length': content.length
 		// 	'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 		}
 	};
