@@ -56,7 +56,7 @@ app.post('/auth', (request, response) => {
 	var content = qs.stringify(post_data);
 
 	var options = {
-		protocol: 'https',
+		protocol: 'https:',
 		hostname: 'api.line.me',
 		port: 443,
 		path: '/v2/oauth/accessToken',
