@@ -60,9 +60,7 @@ function init() {
     MsgMgr.registerMsgReply("客服", function (token, msg, userId, time) {
         Line.replyMessage(token, {
             type: "text",
-            text: `如果您有任何问题请通过下方邮箱进行联系我们
-            support@6699.jp
-            我们会在当天进行回复`
+            text: `如果您有任何问题请通过下方邮箱进行联系我们\nsupport@6699.jp\n我们会在当天进行回复`
         });
     });
 }
