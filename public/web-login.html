@@ -6,23 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WebLogin</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <a id="loginBtn" href="">开始登陆</a>
+    <code id="codeText">loading</code>
 </body>
 
 </html>
 
 <script>
-    var loginBtn = document.getElementById('loginBtn');
     var client_id = "1584819109";
-    var redirect_uri = "https://wilhantianlinebot.herokuapp.com/web-login.html";
-    var state = new String(Math.random()).replace('.', "d");
+    var client_secret = "1275ffd0b63cc37a85d6498535ca7c36";
 
-    var href = 'https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri + '&state=' + state;
-    loginBtn.setAttribute("href", href);
+    var loginBtn = document.getElementById('loginBtn');
+    var codeText = document.getElementById('codeText');
 
+    var code = getUrlParam('code');
+    if (!code) {//未授权
+        codeText.hidden = true;
+
+        var redirect_uri = "https://wilhantianlinebot.herokuapp.com/web-login.html";
+        var state = new String(Math.random()).replace('.', "d");
+
+        var href = 'https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirect_uri + '&state=' + state;
+        loginBtn.setAttribute("href", href);
+    } else {
+        loginBtn.hidden = true;
+
+        //获取用户信息
+        accessToken(code);
+    }
 
     function getUrlParam(paraName) {
         var url = document.location.toString();
@@ -42,5 +58,26 @@
         else {
             return "";
         }
+    }
+
+    function accessToken(code) { 
+        $.ajax({
+            url: "https://api.line.me/v2/oauth/accessToken",
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            data: {
+                grant_type: 'authorization_code',
+                client_id: client_id,
+                client_secret: client_secret,
+                code: code,
+                redirect_uri: 'https://wilhantianlinebot.herokuapp.com/web-login.html',
+            },
+            success: function(res){
+                console.log("success", res);
+            },
+            error: function(err){
+                console.log("error", err);
+            },
+        })
     }
 </script>
