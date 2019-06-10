@@ -65,17 +65,31 @@ app.post('/auth', (request, response) => {
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'Content-Length': content.length
-		// 	'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 		}
 	};
 
+	// 获取token
 	var req = http.request(options, function (res) {
 		console.log('STATUS: ' + res.statusCode);
-		console.log('HEADERS: ' + JSON.stringify(res.headers));
 		res.setEncoding('utf8');
 		res.on('data', function (chunk) {
 			console.log('BODY: ' + chunk);
-			response.json(JSON.parse(chunk));
+			var resJson = JSON.parse(chunk);
+			var access_token = resJson.access_token;
+
+			// 获取用户信息
+			options.method = 'GET';
+			options.path = "v2/profile";
+			options.headers = {
+				Authorization: 'Bearer ' + access_token
+			};
+			var pReq = http.request(options, function(pRes){
+				pRes.setEncoding('utf8');
+				res.on('data', function (chunk) {
+					response.json(JSON.parse(chunk));
+				});
+			});
+			pReq.end();
 		});
 	});
 
