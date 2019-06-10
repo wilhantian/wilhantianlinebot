@@ -25,7 +25,7 @@ class Menu{
 
             // this.initGamePad();
             this.initDefMenu("./img/richmenu-1.png", "line://app/1579130869-Dpk1R65p", "line://app/1579130869-8AgDwr4m", true);
-            this.initDefMenu("./img/richmenu-2.png", "line://app/1579130869-pAZDoX4A", "line://app/1579130869-8AgDwr4m");
+            this.initDefMenu("./img/richmenu-2.png", "line://app/1579130869-GYBx2Wg0", "line://app/1579130869-8AgDwr4m");
             // this.initGameMenu();
         }, (err)=>{
             console.error("获取菜单列表异常", err)
