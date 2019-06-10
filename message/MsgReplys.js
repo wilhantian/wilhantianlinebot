@@ -6,27 +6,27 @@ function init() {
     MsgMgr.registerFollow(function (token, userId) {
         const echo = MsgBuilder.createFollowMsg("-", [
             {
-                title: "萌犬",
+                title: "あなたはワンコがお好き？？",//萌犬
                 img: "https://box1.fanyoy.com/games/line-demo/res/dog_banner.png",
-                label: "萌犬",
+                label: "あなたはワンコがお好き？？",
                 url: "line://app/1579130869-Dpk1R65p",
             },
             {
-                title: "神经猫",
+                title: "😹イカれてる？イカれてない？？",//神经猫
                 img: "https://box1.fanyoy.com/games/line-demo/res/cat_icon.png",
-                label: "神经猫",
+                label: "😹イカれてる？イカれてない？？",
                 url: "line://app/1579130869-NEAZvJoV",
             },
             {
-                title: "射苹果",
+                title: "🔥ソコは違う！！！！",//苹果
                 img: "https://box1.fanyoy.com/games/line-demo/res/apple_icon.png",
-                label: "射苹果",
+                label: "🔥ソコは違う！！！！",
                 url: "line://app/1579130869-GYBx2Wg0",
             },
             {
-                title: "怪兽",
+                title: "Monster",
                 img: "https://box1.fanyoy.com/games/line-demo/res/monster_icon.png",
-                label: "怪兽",
+                label: "Monster",
                 url: "line://app/1579130869-1egl9v04",
             },
         ]);
@@ -36,19 +36,19 @@ function init() {
     MsgMgr.registerMsgReply("推荐", function (token, msg, userId, time) {
         const echo = MsgBuilder.createGameScrollListMsg("scroll", [
             {
-                title: '萌犬变变变',
+                title: 'あなたはワンコがお好き？？',//萌犬
                 img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_1.png',
                 url: 'line://app/1579130869-Dpk1R65p',
                 desc: '挂机类',
             },
             {
-                title: '足球',
+                title: '足球',//足球
                 img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_2.png',
                 url: 'line://app/1579130869-pAZDoX4A',
                 desc: '动作类',
             },
             {
-                title: '萌犬变变变II',
+                title: 'あなたはワンコがお好き？？',//萌犬
                 img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_3.png',
                 url: 'line://app/1579130869-Dpk1R65p',
                 desc: '挂机类',

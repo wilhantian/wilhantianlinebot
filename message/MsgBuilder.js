@@ -50,7 +50,7 @@ function createFollowMsg(altText, links) {
                 "type": "image",
                 "url": links[0].img,
                 "size": "full",
-                "aspectRatio": "1.9:1",
+                "aspectRatio": "2:1",
                 "action": {
                     "type": "uri",
                     "label": links[0].label,
