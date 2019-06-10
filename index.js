@@ -62,9 +62,9 @@ app.post('/auth', (request, response) => {
 		port: 443,
 		path: '/v2/oauth/accessToken',
 		method: 'POST',
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-		}
+		// headers: {
+		// 	'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+		// }
 	};
 
 	var req = http.request(options, function (res) {
