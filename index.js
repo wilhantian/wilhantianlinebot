@@ -85,9 +85,12 @@ app.post('/auth', (request, response) => {
 			};
 			var pReq = http.request(options, function(pRes){
 				pRes.setEncoding('utf8');
-				res.on('data', function (chunk) {
+				pRes.on('data', function (chunk) {
 					response.json(JSON.parse(chunk));
 				});
+			});
+			pReq.on('error', function(e){
+				console.log('获取用户信息失败', e);
 			});
 			pReq.end();
 		});
