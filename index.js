@@ -44,7 +44,7 @@ app.all('/callback', line.middleware(config.LineConfig), (req, res) => {
 app.post('/auth', (request, response) => {
 	
 	var code = request.body.code;
-	var redirect_uri = "baidu";//request.body.redirect_uri;
+	var redirect_uri = request.body.redirect_uri;
 	console.log(code, redirect_uri);
 	var post_data = {
 		grant_type: 'authorization_code',
