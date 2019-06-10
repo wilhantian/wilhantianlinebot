@@ -86,6 +86,7 @@ app.post('/auth', (request, response) => {
 			var pReq = http.request(options, function(pRes){
 				pRes.setEncoding('utf8');
 				pRes.on('data', function (chunk) {
+					console.log(chunk);
 					response.json(JSON.parse(chunk));
 				});
 			});

@@ -37,7 +37,11 @@
         loginBtn.hidden = true;
 
         //获取用户信息
-        accessToken(code);
+        accessToken(code, function(res){
+            codeText.innerText(res);
+        }, function(){
+            codeText.innerText('获取用户信息失败');
+        });
     }
 
     function getUrlParam(paraName) {
@@ -60,7 +64,7 @@
         }
     }
 
-    function accessToken(code) { 
+    function accessToken(code, success, error) { 
         $.ajax({
             url: "https://wilhantianlinebot.herokuapp.com/auth",
             type: 'post',
@@ -71,9 +75,11 @@
             },
             success: function(res){
                 console.log("success", res);
+                success && success(res);
             },
             error: function(err){
                 console.log("error", err);
+                error && error(err);
             },
         })
     }
