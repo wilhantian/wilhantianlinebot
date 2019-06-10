@@ -9,7 +9,7 @@ const MsgMgr = require("./message/MsgMgr");
 const MsgReplys = require("./message/MsgReplys");
 var bodyParser = require('body-parser');//解析,用req.body获取post参数
 	
-var http = require('http');
+var http = require('https');
 var qs = require('querystring');
 
 const app = express();
@@ -56,7 +56,7 @@ app.post('/auth', (request, response) => {
 	var content = qs.stringify(post_data);
 
 	var options = {
-		protocol: 'https:',
+		protocol: 'https',
 		hostname: 'api.line.me',
 		port: 443,
 		path: '/v2/oauth/accessToken',
