@@ -9,7 +9,7 @@ function init() {
                 title: "萌犬",
                 img: "https://box1.fanyoy.com/games/line-demo/res/dog_banner.png",
                 label: "萌犬",
-                url: "https://6699.jp/test/?appid=dog",
+                url: "line://app/1579130869-Dpk1R65p",
             },
             {
                 title: "神经猫",
