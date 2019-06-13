@@ -20,6 +20,7 @@ class MsgMgr{
     }
 
     handle(event){
+        console.log(event);
         if(event.type == "message" && event.message.type == "text"){//过滤文本消息
             return this.handleMsgReply(event);
         }
@@ -39,6 +40,8 @@ class MsgMgr{
 
     // 处理消息回复
     handleMsgReply(event){
+        console.log("处理消息回复", event);
+
         var inMsg = event.message.text;
         for(var match in this.msgDict){
             if(match == inMsg){
