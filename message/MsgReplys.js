@@ -93,7 +93,7 @@ function init() {
                             "action": {
                                 "type": "uri",
                                 "label": "领奖",
-                                "uri": "https://baidu.com"
+                                "uri": "line://app/1579130869-2mbJK3nm"
                             }
                         }
                     ]
