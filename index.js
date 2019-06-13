@@ -50,7 +50,12 @@ app.post("/get_reward", bodyParser.json(), bodyParser.urlencoded({ extended: fal
 				"type": "image",
 				"url": "https://wilhantianlinebot.herokuapp.com/img/amazon-card.png",
 				"size": "full",
-				"aspectRatio": "1.58:1"
+				"aspectRatio": "1.58:1",
+				"action": {
+					"type": "uri",
+					"uri": "https://www.amazon.cn/gp/css/gc/payment/ref=asv_gclp_bwd_red",
+					"label": "兑换地址"
+				}
 			},
 			"body": {
 				"type": "box",
