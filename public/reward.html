@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,26 +8,71 @@
     <title>领奖</title>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
     <style>
-        *{
+        * {
             box-sizing: content-box;
         }
-        .group{
+
+        .group {
             padding: 20px
+        }
+
+        #input {
+            border: 2px solid #0a0;
+            line-height: 32px;
+        }
+
+        #submit {
+            padding: 6px;
+            margin-top: 12px;
+            background: #0a0;
+            width: 60px;
+            text-align: center;
+            color: #fff;
         }
     </style>
 </head>
 
 <body>
     <div class="group">
-        <input id="input" placeholder="请输入兑换码"/>
+        <input id="input" placeholder="请输入兑换码" />
         <div id="submit">兑换</div>
     </div>
 </body>
+
 </html>
 
 <script>
-    $('#submit').click(function(){
-        console.log($('#input').val());
-    });
+    $('.group').hide();
+    liff.init(
+        data => {
+            // Now you can call LIFF API
+            const userId = data.context.userId;
+
+            $('.group').show();
+
+            $('#submit').click(function () {
+                console.log($('#input').val());
+
+                $.ajax({
+                    url: "https://wilhantianlinebot.herokuapp.com/get_reward",
+                    type: 'POST',
+                    data: {
+                        userId: userId
+                    },
+                    dataType: 'json',
+                    success: ()=>{
+                        liff.closeWindow();
+                    },
+                    error: ()=>{
+                        alert('请求错误');
+                    }
+                });
+            });
+        },
+        err => {
+            // LIFF initialization failed
+        }
+    );
 </script>

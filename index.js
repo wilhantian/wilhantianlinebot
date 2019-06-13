@@ -39,6 +39,13 @@ app.all('/callback', line.middleware(config.LineConfig), (req, res) => {
 		});
 });
 
+app.post("/get_reward", bodyParser.json(), bodyParser.urlencoded({extended: false}), (request, response)=>{
+	console.log(request.body);
+	response.json({
+		code: 200
+	})
+});
+
 app.post('/auth', bodyParser.json(), bodyParser.urlencoded({extended: false}), (request, response) => {
 	
 	var code = request.body.code;
