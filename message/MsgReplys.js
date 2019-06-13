@@ -33,7 +33,7 @@ function init() {
         Line.replyMessage(token, echo);
     });
 
-    MsgMgr.registerMsgReply("推荐", function (token, msg, userId, time) {
+    MsgMgr.registerPostReply("推荐", function (token, data, userId, time) {
         const echo = MsgBuilder.createGameScrollListMsg("scroll", [
             {
                 title: 'あなたはワンコがお好き？？',//萌犬
@@ -57,7 +57,7 @@ function init() {
         Line.replyMessage(token, echo);
     });
 
-    MsgMgr.registerMsgReply("社区", function (token, msg, userId, time) {
+    MsgMgr.registerPostReply("社区", function (token, data, userId, time) {
         Line.replyMessage(token, {
             type: "flex",
             altText: `社区`,

@@ -69,9 +69,9 @@ class Menu{
                         height: 846
                     },
                     action: {
-                        type: "message",
+                        type: "postback",
                         label: "推荐",
-                        text: "推荐"
+                        data: "type=推荐"
                     }
                 },
                 {
@@ -95,9 +95,9 @@ class Menu{
                         height: 846
                     },
                     action: {
-                        type: "message",
+                        type: "postback",
                         label: "社区",
-                        text: "社区"
+                        data: "type=社区"
                     }
                 }
             ]
