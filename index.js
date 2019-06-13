@@ -13,8 +13,8 @@ var http = require('https');
 var qs = require('querystring');
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static('public'));
 
