@@ -111,7 +111,11 @@ app.post('/auth', (request, response) => {
 // event handler
 function handleEvent(event) {
 	console.log("收到消息:", event, event.source.userId);
-	MsgMgr.handle(event);
+	var res = MsgMgr.handle(event);
+	if(res){
+		return res;
+	}
+	return Promise.reject(null);
 }
 
 // listen on port
