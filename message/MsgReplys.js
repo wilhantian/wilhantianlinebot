@@ -84,7 +84,7 @@ function init() {
                             "action": {
                                 "type": "postback",
                                 "label": "客服",
-                                "data": "客服"
+                                "data": "type=客服"
                             }
                         },
                         {
@@ -93,7 +93,7 @@ function init() {
                             "action": {
                                 "type": "uri",
                                 "label": "领奖",
-                                "uri": "https://baidu.com"
+                                "uri": "type=领奖"
                             }
                         }
                     ]
