@@ -57,6 +57,51 @@ function init() {
         Line.replyMessage(token, echo);
     });
 
+    MsgMgr.registerMsgReply("社区", function (token, msg, userId, time) {
+        Line.replyMessage(token, {
+            type: "flex",
+            altText: `社区`,
+            contents: {
+                "type": "bubble",
+                "header": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "你要做什么？"
+                        }
+                    ]
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "md",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "style": "primary",
+                            "action": {
+                                "type": "postback",
+                                "label": "客服",
+                                "data": "客服"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "style": "primary",
+                            "action": {
+                                "type": "uri",
+                                "label": "领奖",
+                                "uri": "https://baidu.com"
+                            }
+                        }
+                    ]
+                }
+            }
+        });
+    });
+
     MsgMgr.registerMsgReply("客服", function (token, msg, userId, time) {
         Line.replyMessage(token, {
             type: "text",

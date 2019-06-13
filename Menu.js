@@ -96,8 +96,8 @@ class Menu{
                     },
                     action: {
                         type: "message",
-                        label: "客服",
-                        text: "客服"
+                        label: "社区",
+                        text: "社区"
                     }
                 }
             ]
