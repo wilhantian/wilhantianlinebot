@@ -8,7 +8,7 @@ const client = require("./Line");
 const MsgMgr = require("./message/MsgMgr");
 const MsgReplys = require("./message/MsgReplys");
 var bodyParser = require('body-parser');//解析,用req.body获取post参数
-	
+
 var http = require('https');
 var qs = require('querystring');
 
@@ -39,19 +39,70 @@ app.all('/callback', line.middleware(config.LineConfig), (req, res) => {
 		});
 });
 
-app.post("/get_reward", bodyParser.json(), bodyParser.urlencoded({extended: false}), (request, response)=>{
+app.post("/get_reward", bodyParser.json(), bodyParser.urlencoded({ extended: false }), (request, response) => {
 	console.log(request.body.userId);
 	client.pushMessage(request.body.userId, {
-		type: 'text',
-		text: "亚马逊卡:asidojaosidjoaisjd"
+		type: 'flex',
+		altText: "亚马逊",
+		contents: {
+			"type": "bubble",
+			"hero": {
+				"type": "image",
+				"url": "https://wilhantianlinebot.herokuapp.com/img/amazon-card.png",
+				"size": "full",
+				"aspectRatio": "1.58:1"
+			},
+			"body": {
+				"type": "box",
+				"layout": "vertical",
+				"contents": [
+					{
+						"type": "box",
+						"layout": "horizontal",
+						"contents": [
+							{
+								"type": "text",
+								"text": "金额",
+								"flex": 1,
+								"weight": "bold",
+								"color": "#666666"
+							},
+							{
+								"type": "text",
+								"text": "￥30",
+								"flex": 2
+							}
+						]
+					},
+					{
+						"type": "box",
+						"layout": "horizontal",
+						"contents": [
+							{
+								"type": "text",
+								"text": "卡号",
+								"flex": 1,
+								"weight": "bold",
+								"color": "#666666"
+							},
+							{
+								"type": "text",
+								"text": "2614-8D62-1EF7",
+								"flex": 2
+							}
+						]
+					}
+				]
+			}
+		}
 	})
 	response.json({
 		code: 200
 	});
 });
 
-app.post('/auth', bodyParser.json(), bodyParser.urlencoded({extended: false}), (request, response) => {
-	
+app.post('/auth', bodyParser.json(), bodyParser.urlencoded({ extended: false }), (request, response) => {
+
 	var code = request.body.code;
 	var redirect_uri = request.body.redirect_uri;
 	console.log(code, redirect_uri);
@@ -92,14 +143,14 @@ app.post('/auth', bodyParser.json(), bodyParser.urlencoded({extended: false}), (
 			options.headers = {
 				Authorization: 'Bearer ' + access_token
 			};
-			var pReq = http.request(options, function(pRes){
+			var pReq = http.request(options, function (pRes) {
 				pRes.setEncoding('utf8');
 				pRes.on('data', function (chunk) {
 					console.log(chunk);
 					response.json(JSON.parse(chunk));
 				});
 			});
-			pReq.on('error', function(e){
+			pReq.on('error', function (e) {
 				console.log('获取用户信息失败', e);
 			});
 			pReq.end();
@@ -121,7 +172,7 @@ app.post('/auth', bodyParser.json(), bodyParser.urlencoded({extended: false}), (
 function handleEvent(event) {
 	console.log("收到消息:", event, event.source.userId);
 	var res = MsgMgr.handle(event);
-	if(res){
+	if (res) {
 		return res;
 	}
 	return Promise.reject(null);
