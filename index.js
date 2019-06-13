@@ -41,9 +41,29 @@ app.all('/callback', line.middleware(config.LineConfig), (req, res) => {
 
 app.post("/get_reward", bodyParser.json(), bodyParser.urlencoded({extended: false}), (request, response)=>{
 	console.log(request.body);
+	client.pushMessage(request.body.userId, {
+		type: 'flex',
+		altText: "亚马逊兑换卡",
+		contents: [
+			{
+				type: 'bubble',
+				body: {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "md",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": "as98a8s9d9asjd9ja98sd",
+                        }
+                    ]
+                }
+			}
+		]
+	})
 	response.json({
 		code: 200
-	})
+	});
 });
 
 app.post('/auth', bodyParser.json(), bodyParser.urlencoded({extended: false}), (request, response) => {
