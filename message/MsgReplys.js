@@ -93,7 +93,7 @@ function init() {
                             "action": {
                                 "type": "uri",
                                 "label": "领奖",
-                                "uri": "type=领奖"
+                                "uri": "https://baidu.com"
                             }
                         }
                     ]
