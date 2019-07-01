@@ -11,7 +11,7 @@ class Manager {
     constructor() {
         this.handlers = {};
 
-        MsgRegister.reg();
+        MsgRegister.reg(this);
     }
 
     handle(event) {
