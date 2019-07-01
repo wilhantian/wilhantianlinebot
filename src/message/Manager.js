@@ -1,7 +1,7 @@
 const MsgRegister = require('./MsgRegister');
 
 class Manager {
-    static inst() {
+    static get inst() {
         if (!Manager._inst) {
             Manager._inst = new Manager();
         }
