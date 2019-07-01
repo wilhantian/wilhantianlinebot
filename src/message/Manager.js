@@ -2,9 +2,12 @@ const MsgRegister = require('./MsgRegister');
 
 class Manager {
     static get inst() {
+        console.log('1')
         if (!Manager._inst) {
+            console.log('2')
             Manager._inst = new Manager();
         }
+        console.log('3')
         return Manager._inst;
     }
 

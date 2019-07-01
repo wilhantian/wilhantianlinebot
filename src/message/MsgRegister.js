@@ -3,7 +3,7 @@ const Line = require('../core/Line');
 
 
 module.exports = {
-    reg: function (mgr) {
+    reg: function () {
 
         MsgMgr.inst.register('message', {
             'message.type': 'text',
