@@ -17,15 +17,17 @@ class Manager {
         var handlers = this.handlers[event.type] || [];
         for(var i=0; i<handlers.length; i++){
             var hand = handlers[i];
-            
+            var isMatch = true;
             for(var k in hand.param){
                 var v = hand.param[k];
-                console.log(k, v, ':', this._getObjectVar(event, k));
-                if(this._getObjectVar(event, k) == v){
-                    if(hand.handler){
-                        return hand.handler(event);
-                    }
+                // console.log(k, v, ':', this._getObjectVar(event, k));
+                if(this._getObjectVar(event, k) != v){
+                    isMatch = false;
+                    break;
                 }
+            }
+            if(isMatch && hand.handler){
+                return hand.handler(event);
             }
         }
 
