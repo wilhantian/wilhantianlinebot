@@ -1,5 +1,3 @@
-const MsgRegister = require('./MsgRegister');
-
 class Manager {
     static get inst() {
         console.log('1')
@@ -13,8 +11,6 @@ class Manager {
 
     constructor() {
         this.handlers = {};
-
-        MsgRegister.reg(this);
     }
 
     handle(event) {
