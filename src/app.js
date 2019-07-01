@@ -36,6 +36,6 @@ MsgMgr.inst.register('message', {
     'message.text': 'hello'
 }, function (event) {
     return Line.replyMessage(event.replyToken, {
-        type: 'text', text: event.message.text
+        type: 'text', text: event.message.text + '...'
     });
 });

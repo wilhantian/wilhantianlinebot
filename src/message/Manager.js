@@ -20,6 +20,7 @@ class Manager {
             
             for(var k in hand.param){
                 var v = hand.param[k];
+                console.log(k, v, ':', this._getObjectVar(event, k));
                 if(this._getObjectVar(event, k) == v){
                     if(hand.handler){
                         return hand.handler(event);
