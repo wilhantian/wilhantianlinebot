@@ -1,5 +1,6 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
+const bodyParser = require('body-parser');
 const multer = require('multer');
 
 const config = require('./config');
@@ -15,6 +16,7 @@ const lineCfg = {
 };
 
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.post(config.messageCallbackURI, line.middleware(lineCfg), (req, res) => {
     Promise
@@ -70,7 +72,7 @@ app.all("/get-menus", async (req, res)=>{
     res.json(menuRes);
 })
 
-app.all("/delete-menu", async (req, res)=>{
+app.post("/delete-menu", bodyParser.json(), async (req, res)=>{
     //TODO 传递参数id
     console.log(req);
     var menuRes = await MsgMgr.inst.deleteRichMenu(req.body.id);
