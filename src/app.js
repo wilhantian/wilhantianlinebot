@@ -3,6 +3,7 @@ const express = require('express');
 
 const config = require('./config');
 const MsgMgr = require('./message/Manager');
+const message = require('./message/message');
 const Line = require('./core/Line');
 
 const app = express();
@@ -31,11 +32,14 @@ app.listen(port, () => {
 });
 
 
-MsgMgr.inst.register('message', {
-    'message.type': 'text',
-    'message.text': 'hello'
-}, function (event) {
-    return Line.replyMessage(event.replyToken, {
-        type: 'text', text: event.message.text + '...'
-    });
-});
+// MsgMgr.inst.register('message', {
+//     'message.type': 'text',
+//     'message.text': 'hello'
+// }, function (event) {
+//     return Line.replyMessage(event.replyToken, {
+//         type: 'text', text: event.message.text + '...'
+//     });
+// });
+
+// 初始化消息管理器
+MsgMgr.inst;

@@ -4,13 +4,16 @@ class Manager {
     static get inst() {
         if (!Manager._inst) {
             Manager._inst = new Manager();
+            Manager._inst.init();            
         }
         return Manager._inst;
     }
 
     constructor() {
         this.handlers = {};
-    
+    }
+
+    init(){
         message.register(this);
     }
 
