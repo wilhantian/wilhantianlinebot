@@ -71,6 +71,8 @@ app.all("/get-menus", async (req, res)=>{
 })
 
 app.all("/delete-menu", async (req, res)=>{
+    //TODO 传递参数id
+    console.log(req);
     var menuRes = await MsgMgr.inst.deleteRichMenu(req.body.id);
     res.json(menuRes);
 })
