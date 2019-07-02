@@ -36,9 +36,7 @@ app.all('/upload', upload.single('image'), (req, res)=>{
     console.log('req.file = ', req.file);
     console.log('req.body = ', req.body);
 
-    res.json({
-        code: 200,
-    })
+    res.redirect('/admin.html');
 });
 
 app.listen(port, () => {
