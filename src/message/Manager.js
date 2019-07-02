@@ -5,7 +5,7 @@ class Manager {
     static get inst() {
         if (!Manager._inst) {
             Manager._inst = new Manager();
-            Manager._inst.init();            
+            Manager._inst.init();
         }
         return Manager._inst;
     }
@@ -14,28 +14,28 @@ class Manager {
         this.handlers = {};
     }
 
-    init(){
+    init() {
         message.register(this);
     }
 
-    get client(){
+    get client() {
         return Line;
     }
 
     handle(event) {
         var handlers = this.handlers[event.type] || [];
-        for(var i=0; i<handlers.length; i++){
+        for (var i = 0; i < handlers.length; i++) {
             var hand = handlers[i];
             var isMatch = true;
-            for(var k in hand.param){
+            for (var k in hand.param) {
                 var v = hand.param[k];
-                
-                if(this._getObjectVar(event, k) != v){
+
+                if (this._getObjectVar(event, k) != v) {
                     isMatch = false;
                     break;
                 }
             }
-            if(isMatch && hand.handler){
+            if (isMatch && hand.handler) {
                 return hand.handler(event, this);
             }
         }
@@ -53,17 +53,62 @@ class Manager {
         });
     }
 
-    _getObjectVar(obj, keyStr){
+    _getObjectVar(obj, keyStr) {
         var kList = keyStr.split('.');
-        
-        for(var i=0; i<kList.length; i++){
+
+        for (var i = 0; i < kList.length; i++) {
             var k = kList[i];
-            if(!obj){
+            if (!obj) {
                 return undefined;
             }
             obj = obj[k];
         }
         return obj;
+    }
+
+    createRichMenu(size, selected, name, chatBarText, areas, imageData) {
+        return new Promise((next)=>{
+            this.client.createRichMenu({
+                size: size,
+                selected: selected,
+                name: name,
+                chatBarText: chatBarText,
+                areas: areas
+            }).then((id)=>{
+                this.client.setRichMenuImage(id, imageData, 'image/jpeg').then(()=>{
+                    next({
+                        state: true,
+                        id: id
+                    });
+                }).catch((err)=>{
+                    next({
+                        state: false,
+                        error: err
+                    });
+                })
+            }).catch((err)=>{
+                console.error(err);
+                next({
+                    state: false,
+                    error: err
+                });
+            });
+        });
+    }
+
+    deleteRichMenu(id) {
+        return new Promise((next)=>{
+            this.client.deleteRichMenu(id).then(()=>{
+                next({
+                    state: true
+                });
+            }).catch((err)=>{
+                next({
+                    state: false,
+                    error: err
+                });
+            });
+        })
     }
 }
 

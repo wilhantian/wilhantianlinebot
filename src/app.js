@@ -1,5 +1,6 @@
 const line = require('@line/bot-sdk');
 const express = require('express');
+const multer = require('multer');
 
 const config = require('./config');
 const MsgMgr = require('./message/Manager');
@@ -27,6 +28,18 @@ app.post(config.messageCallbackURI, line.middleware(lineCfg), (req, res) => {
         });
 });
 
+var storage = multer.memoryStorage()
+var upload = multer({
+    storage: storage
+});
+app.all('/upload', upload.single('image'), (req, res)=>{
+    console.log('req.file = ', req.file);
+    console.log('req.body = ', req.body);
+
+    res.json({
+        code: 200,
+    })
+});
 
 app.listen(port, () => {
     console.log(`listening on ${port}`);
