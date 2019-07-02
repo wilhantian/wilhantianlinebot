@@ -1,16 +1,17 @@
+var message = require('./message');
+
 class Manager {
     static get inst() {
-        console.log('1')
         if (!Manager._inst) {
-            console.log('2')
             Manager._inst = new Manager();
         }
-        console.log('3')
         return Manager._inst;
     }
 
     constructor() {
         this.handlers = {};
+    
+        message.register(this);
     }
 
     handle(event) {
@@ -20,7 +21,7 @@ class Manager {
             var isMatch = true;
             for(var k in hand.param){
                 var v = hand.param[k];
-                // console.log(k, v, ':', this._getObjectVar(event, k));
+                
                 if(this._getObjectVar(event, k) != v){
                     isMatch = false;
                     break;
