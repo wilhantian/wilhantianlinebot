@@ -32,11 +32,35 @@ var storage = multer.memoryStorage()
 var upload = multer({
     storage: storage
 });
-app.all('/upload', upload.single('image'), (req, res)=>{
+app.all('/upload', upload.single('image'), async (req, res)=>{
     console.log('req.file = ', req.file);
     console.log('req.body = ', req.body);
 
-    res.redirect('/admin.html');
+    var areas;
+    try {
+        areas = JSON.parse(req.body.areas);        
+    } catch (error) {
+        res.redirect('/error.html');
+    }
+
+    var menuRes = await MsgMgr.inst.createRichMenu(
+        {
+            width: req.body.width,
+            height: req.body.height
+        }, 
+        true, 
+        req.body.name, 
+        req.body.chatBarText, 
+        areas,
+        req.file.buffer,
+        req.file.mimetype
+    );
+
+    if(menuRes.state){
+        res.redirect('/admin.html');
+    }else{
+        res.redirect('/error.html');
+    }
 });
 
 app.listen(port, () => {

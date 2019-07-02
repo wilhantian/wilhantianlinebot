@@ -1,16 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <form action="/upload" enctype="multipart/form-data" method="POST">
-        <input name="hahhaha" type="text">
+        <input name="name" type="text">
+        <input name="chatBarText" type="text">
+        <input name="width" type="text">
+        <input name="height" type="text">
+        <textarea name="areas">
+            [
+                {
+                    bounds: {
+                        x: 0,
+                        y: 0,
+                        width: 2500,
+                        height: 840
+                    },
+                    action: {
+                        type: "uri",
+                        label: "banner",
+                        uri: bannerURL
+                    }
+                },
+                {
+                    bounds: {
+                        x: 0,
+                        y: 840,
+                        width: 840,
+                        height: 846
+                    },
+                    action: {
+                        type: "postback",
+                        label: "推荐",
+                        data: "type=推荐"
+                    }
+                },
+                {
+                    bounds: {
+                        x: 840,
+                        y: 840,
+                        width: 820,
+                        height: 846
+                    },
+                    action: {
+                        type: "uri",
+                        label: "6699",
+                        uri: homeURL
+                    }
+                },
+                {
+                    bounds: {
+                        x: 1660,
+                        y: 840,
+                        width: 840,
+                        height: 846
+                    },
+                    action: {
+                        type: "postback",
+                        label: "社区",
+                        data: "type=社区"
+                    }
+                }
+            ]
+        </textarea>
         <input name="image" type="file" accept=".jpg,.png">
         <input type="submit">
     </form>
 </body>
+
 </html>

@@ -66,7 +66,7 @@ class Manager {
         return obj;
     }
 
-    createRichMenu(size, selected, name, chatBarText, areas, imageData) {
+    createRichMenu(size, selected, name, chatBarText, areas, imgBuffer, imgMimetype) {
         return new Promise((next)=>{
             this.client.createRichMenu({
                 size: size,
@@ -75,7 +75,7 @@ class Manager {
                 chatBarText: chatBarText,
                 areas: areas
             }).then((id)=>{
-                this.client.setRichMenuImage(id, imageData, 'image/jpeg').then(()=>{
+                this.client.setRichMenuImage(id, imgBuffer, imgMimetype).then(()=>{
                     next({
                         state: true,
                         id: id
