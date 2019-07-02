@@ -75,19 +75,23 @@ class Manager {
                 chatBarText: chatBarText,
                 areas: areas
             }).then((id)=>{
+                console.log("菜单设置成功: ", id);
                 this.client.setRichMenuImage(id, imgBuffer, imgMimetype).then(()=>{
                     next({
                         state: true,
                         id: id
                     });
+                    console.log("图片上传成功: ", id);
                 }).catch((err)=>{
                     next({
                         state: false,
                         error: err
                     });
+                    console.log("图片上传失败: ", id);
                 })
             }).catch((err)=>{
                 console.error(err);
+                console.log("菜单设置失败: ", id);
                 next({
                     state: false,
                     error: err
