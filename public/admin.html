@@ -15,10 +15,43 @@
             width: 100%;
             height: 400px;
         }
+
+        .menu-list{
+
+        }
+        .menu-item{
+
+        }
+        .menu-id{
+            color: gray;
+            font-size: 14px;
+        }
+        .menu-name{
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .menu-bar{
+            font-size: 14px;
+        }
+        .menu-delete{
+            background: red;
+            color: #fff;
+            padding-left: 6px;
+            padding-right: 6px;
+        }
     </style>
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
 <body>
+    <div class="menu-list">
+        <div class="menu-item">
+            <div class="menu-id"></div>
+            <div class="menu-name"></div>
+            <div class="menu-bar"></div>
+            <div class="menu-delete">删除</div>
+        </div>
+    </div>
     <hr>
     <p>创建新的菜单</p>
     <form action="/upload" enctype="multipart/form-data" method="POST">
@@ -88,3 +121,25 @@
 </body>
 
 </html>
+
+<script>
+$.ajax({
+    url: '/get-menus',
+    type: 'POST',
+    success: function(list){
+        $('.menu-list').children().remove();
+        for(var i=0; i<list.length; i++){
+            var o = list[i];
+            $('.menu-list').append('<div class="menu-item"><div class="menu-id">'+o.richMenuId+'</div><div class="menu-name">'+o.name+'</div><div class="menu-bar">'+o.chatBarText+'</div><div class="menu-delete">删除</div></div>');
+        }
+        
+    },
+    error: function(err){
+        console.log(err);
+    }
+});
+
+$('.menu-delete').on(function(event){
+    console.log(event);
+})
+</script>
