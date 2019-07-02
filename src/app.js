@@ -13,6 +13,8 @@ const lineCfg = {
     channelSecret: config.channelSecret,
 };
 
+app.use(express.static('public'))
+
 app.post(config.messageCallbackURI, line.middleware(lineCfg), (req, res) => {
     Promise
         .all(req.body.events.map((event)=>{
