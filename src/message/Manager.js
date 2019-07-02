@@ -91,7 +91,7 @@ class Manager {
                 })
             }).catch((err)=>{
                 console.error(err);
-                console.log("菜单设置失败: ", id);
+                console.log("菜单设置失败");
                 next({
                     state: false,
                     error: err
