@@ -10,10 +10,10 @@
 
 <body>
     <form action="/upload" enctype="multipart/form-data" method="POST">
-        <input name="name" type="text">
-        <input name="chatBarText" type="text">
-        <input name="width" type="text">
-        <input name="height" type="text">
+        <input name="name" type="text" placeholder="name">
+        <input name="chatBarText" type="text" placeholder="chatBarText">
+        <input name="width" type="text" placeholder="width">
+        <input name="height" type="text" placeholder="height">
         <textarea name="areas">
             [
                 {
@@ -70,7 +70,7 @@
                 }
             ]
         </textarea>
-        <input name="image" type="file" accept=".jpg,.png">
+        <input name="image" type="file" accept=".jpg,.png" placeholder="背景图">
         <input type="submit">
     </form>
 </body>
