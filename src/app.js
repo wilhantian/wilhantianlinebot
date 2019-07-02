@@ -35,15 +35,11 @@ var upload = multer({
     storage: storage
 });
 app.all('/upload', upload.single('image'), async (req, res)=>{
-    console.log('req.file = ', req.file);
-    console.log('req.body = ', req.body);
-
     var areas;
     try {
-        areas = eval(req.body.areas);        //JSON.parse
+        areas = eval(req.body.areas);
     } catch (error) {
         res.redirect('/error.html');
-        console.log(error);
         return;
     }
 
