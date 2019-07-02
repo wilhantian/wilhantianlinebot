@@ -71,7 +71,7 @@ app.all("/get-menus", async (req, res)=>{
 })
 
 app.all("/delete-menu", async (req, res)=>{
-    var menuRes = await MsgMgr.inst.deleteRichMenu();
+    var menuRes = await MsgMgr.inst.deleteRichMenu(req.body.id);
     res.json(menuRes);
 })
 

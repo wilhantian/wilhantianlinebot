@@ -7,34 +7,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        input{
+        input {
             display: block;
         }
-        textarea{
+
+        textarea {
             display: block;
             width: 100%;
             height: 400px;
         }
 
-        .menu-list{
+        .menu-list {}
 
-        }
-        .menu-item{
+        .menu-item {
             padding: 8px;
             border: 1px solid gray;
         }
-        .menu-id{
+
+        .menu-id {
             color: gray;
             font-size: 14px;
         }
-        .menu-name{
+
+        .menu-name {
             font-size: 14px;
             font-weight: bold;
         }
-        .menu-bar{
+
+        .menu-bar {
             font-size: 14px;
         }
-        .menu-delete{
+
+        .menu-delete {
             background: red;
             color: #fff;
             padding-left: 6px;
@@ -124,42 +128,49 @@
 </html>
 
 <script>
-$.ajax({
-    url: '/get-menus',
-    type: 'POST',
-    success: function(res){
-        if(!res.state){
-            return;
-        }
-        var list = res.list;
-        $('.menu-list').children().remove();
-        for(var i=0; i<list.length; i++){
-            var o = list[i];
-            $('.menu-list').append('<div data-id="'+o.richMenuId+'" class="menu-item"><div class="menu-id">'+o.richMenuId+'</div><div class="menu-name">'+o.name+'</div><div class="menu-bar">'+o.chatBarText+'</div><div class="menu-delete" data-id="'+o.richMenuId+'">删除</div></div>');
-        }
-        
-    },
-    error: function(err){
-        console.log(err);
-    }
-});
-
-$('.menu-delete').on('click', function(event){
-    var id = event.target.dataset['id'];
-    console.log(id);
-
     $.ajax({
-        url: '/delete-menu',
+        url: '/get-menus',
         type: 'POST',
-        success: function(res){
-            if(!res.state){
+        success: function (res) {
+            if (!res.state) {
                 return;
             }
-            $('.item-item[data-id="'+id+'"]').remove();
+            var list = res.list;
+            $('.menu-list').children().remove();
+            for (var i = 0; i < list.length; i++) {
+                var o = list[i];
+                $('.menu-list').append('<div data-id="' + o.richMenuId + '" class="menu-item"><div class="menu-id">' + o.richMenuId + '</div><div class="menu-name">' + o.name + '</div><div class="menu-bar">' + o.chatBarText + '</div><div class="menu-delete" data-id="' + o.richMenuId + '">删除</div></div>');
+            }
+            listenerDelete();
         },
-        error: function(err){
+        error: function (err) {
             console.log(err);
         }
-    })
-})
+    });
+
+
+    function listenerDelete() {
+        $('.menu-delete').on('click', function (event) {
+            var id = event.target.dataset['id'];
+            console.log(id);
+
+            $.ajax({
+                url: '/delete-menu',
+                type: 'POST',
+                data: {
+                    id: id
+                },
+                success: function (res) {
+                    if (!res.state) {
+                        return;
+                    }
+                    $('.item-item[data-id="' + id + '"]').remove();
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        })
+    }
+
 </script>
