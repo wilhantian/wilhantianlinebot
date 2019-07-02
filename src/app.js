@@ -70,6 +70,11 @@ app.all("/get-menus", async (req, res)=>{
     res.json(menuRes);
 })
 
+app.all("/delete-menu", async (req, res)=>{
+    var menuRes = await MsgMgr.inst.deleteRichMenu();
+    res.json(menuRes);
+})
+
 app.listen(port, () => {
     console.log(`listening on ${port}`);
 });
