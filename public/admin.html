@@ -20,7 +20,7 @@
 
         }
         .menu-item{
-
+            border-bottom: 1px solid gray;
         }
         .menu-id{
             color: gray;
@@ -126,7 +126,11 @@
 $.ajax({
     url: '/get-menus',
     type: 'POST',
-    success: function(list){
+    success: function(res){
+        if(!res.state){
+            return;
+        }
+        var list = res.list;
         $('.menu-list').children().remove();
         for(var i=0; i<list.length; i++){
             var o = list[i];
