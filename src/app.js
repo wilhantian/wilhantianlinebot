@@ -41,6 +41,8 @@ app.all('/upload', upload.single('image'), async (req, res)=>{
         areas = JSON.parse(req.body.areas);        
     } catch (error) {
         res.redirect('/error.html');
+        console.log(error);
+        return;
     }
 
     var menuRes = await MsgMgr.inst.createRichMenu(
