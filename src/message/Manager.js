@@ -1,3 +1,4 @@
+const Line = require('../core/Line');
 var message = require('./message');
 
 class Manager {
@@ -17,6 +18,10 @@ class Manager {
         message.register(this);
     }
 
+    get client(){
+        return Line;
+    }
+
     handle(event) {
         var handlers = this.handlers[event.type] || [];
         for(var i=0; i<handlers.length; i++){
@@ -31,7 +36,7 @@ class Manager {
                 }
             }
             if(isMatch && hand.handler){
-                return hand.handler(event);
+                return hand.handler(event, this);
             }
         }
 

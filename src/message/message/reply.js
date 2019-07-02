@@ -5,8 +5,11 @@ module.exports = [
             "message.type": "text",
             "message.text": "你好"
         },
-        handler: function(event){
-            console.log("你好你妹妹")
+        handler: function(event, mgr){
+            return mgr.client.replyMessage(event.replyToken, {
+                type: 'text', 
+                text: '你好你妹妹'
+            });
         }
     },
     {
@@ -15,8 +18,11 @@ module.exports = [
             "message.type": "text",
             "message.text": "卧槽"
         },
-        handler: function(event){
-            console.log("卧槽？！")
+        handler: function(event, mgr){
+            return mgr.client.replyMessage(event.replyToken, {
+                type: 'text', 
+                text: '我凑'
+            });
         }
     },
 ]

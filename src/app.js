@@ -4,7 +4,6 @@ const express = require('express');
 const config = require('./config');
 const MsgMgr = require('./message/Manager');
 const message = require('./message/message');
-const Line = require('./core/Line');
 
 const app = express();
 
