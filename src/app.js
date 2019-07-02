@@ -38,7 +38,7 @@ app.all('/upload', upload.single('image'), async (req, res)=>{
 
     var areas;
     try {
-        areas = JSON.parse(req.body.areas);        
+        areas = eval(req.body.areas);        //JSON.parse
     } catch (error) {
         res.redirect('/error.html');
         console.log(error);
