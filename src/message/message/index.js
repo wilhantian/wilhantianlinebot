@@ -1,4 +1,5 @@
 var webhook = require('./webhook');
+var reply = require('./reply');
 
 function reg(list, mgr){
     for(var i=0; i<list.length; i++){
@@ -10,6 +11,6 @@ function reg(list, mgr){
 module.exports = {
     register: function(mgr){
         reg(webhook, mgr);
-        // reg(webhook, mgr);
+        reg(reply, mgr);
     }
 }
