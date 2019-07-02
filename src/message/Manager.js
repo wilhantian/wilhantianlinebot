@@ -82,13 +82,16 @@ class Manager {
                         id: id
                     });
                     console.log("图片上传成功: ", id);
+
+                    // 设置默认菜单 TODO
+                    this.client.setDefaultRichMenu(id);
                 }).catch((err)=>{
                     next({
                         state: false,
                         error: err
                     });
                     console.log("图片上传失败: ", id);
-                })
+                });
             }).catch((err)=>{
                 console.error(err);
                 console.log("菜单设置失败");
