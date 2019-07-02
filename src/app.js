@@ -57,7 +57,7 @@ app.all('/upload', upload.single('image'), async (req, res)=>{
         req.file.buffer,
         req.file.mimetype
     );
-
+    console.log(menuRes);
     if(menuRes.state){
         res.redirect('/admin.html');
     }else{
