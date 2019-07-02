@@ -73,9 +73,9 @@ app.all("/get-menus", async (req, res)=>{
 })
 
 app.post("/delete-menu", bodyParser.json(), async (req, res)=>{
-    //TODO 传递参数id
-    console.log(req);
+    console.log(req.body.id);
     var menuRes = await MsgMgr.inst.deleteRichMenu(req.body.id);
+    console.log(menuRes);
     res.json(menuRes);
 })
 
