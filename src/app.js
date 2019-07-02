@@ -65,6 +65,11 @@ app.all('/upload', upload.single('image'), async (req, res)=>{
     }
 });
 
+app.all("/get-menus", async (req, res)=>{
+    var menuRes = await MsgMgr.inst.getAllRichMenu();
+    res.json(menuRes);
+})
+
 app.listen(port, () => {
     console.log(`listening on ${port}`);
 });

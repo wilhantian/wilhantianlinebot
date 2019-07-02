@@ -6,9 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        input{
+            display: block;
+        }
+        textarea{
+            display: block;
+            width: 100%;
+            height: 400px;
+        }
+    </style>
 </head>
 
 <body>
+    <hr>
+    <p>创建新的菜单</p>
     <form action="/upload" enctype="multipart/form-data" method="POST">
         <input name="name" type="text" placeholder="name">
         <input name="chatBarText" type="text" placeholder="chatBarText">

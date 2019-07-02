@@ -117,6 +117,22 @@ class Manager {
             });
         })
     }
+
+    getAllRichMenu(){
+        return new Promise((next)=>{
+            this.client.getRichMenuList().then((list)=>{
+                next({
+                    state: true,
+                    list: list
+                })
+            }).catch((err)=>{
+                next({
+                    state: false,
+                    errot: err
+                })
+            });
+        });
+    }
 }
 
 module.exports = Manager;
