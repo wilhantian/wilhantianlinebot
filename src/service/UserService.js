@@ -14,8 +14,12 @@ class UserService{
             type: 2
         })
         console.log(url + '?' + params);
-        request.get(url + '?' + params, (error, response, body)=>{
-            console.log(body);
+        request.get(url + '?' + params, {json:true}, (error, response, body)=>{
+            if(body.error){
+                console.error(body.error);
+            }else{
+                console.log(`用户${openid}开始关注`);
+            }
         });
     }
 
@@ -28,7 +32,11 @@ class UserService{
         })
         console.log(url + '?' + params);
         request.get(url + '?' + params, {json:true}, (error, response, body)=>{
-            console.log(body, typeof body, response.toJSON());
+            if(body.error){
+                console.error(body.error);
+            }else{
+                console.log(`用户${openid}取消关注`);
+            }
         });
     }
 }
