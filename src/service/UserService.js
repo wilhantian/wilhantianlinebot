@@ -1,6 +1,6 @@
 const request = require('request');
 const querystring = require("querystring");
-const config = request('../config');
+const config = require('../config');
 
 const APPID = config.channelId;
 
