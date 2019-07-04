@@ -32,7 +32,7 @@ module.exports = [
         }
     },
     {
-        type: "message",
+        type: "postback",
         param: {
             "postback.data": "社区",
         },
