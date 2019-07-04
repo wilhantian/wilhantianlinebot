@@ -1,12 +1,15 @@
 const TextTem = require('../template/Text');
 const WelcomeTem = require('../template/Welcome');
 const config = require('../../config');
+const UserService = require('../../service/UserService');
 
 module.exports = [
     {
         type: "follow",
         param: undefined,
-        handler: function(event, mgr){
+        handler: function(event, mgr, userId){
+            UserService.follow(userId);
+
             var welcomeMsg = WelcomeTem.create([
                 {
                     title: "あなたはワンコがお好き？？",//萌犬
@@ -39,8 +42,9 @@ module.exports = [
     {
         type: "unfollow",
         param: undefined,
-        handler: function(event, mgr){
-            console.log("取关了账户")
+        handler: function(event, mgr, userId){
+            console.log("取关了账户");
+            UserService.unfollow(userId);
         }
     },
 ]

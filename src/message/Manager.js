@@ -36,7 +36,12 @@ class Manager {
                 }
             }
             if (isMatch && hand.handler) {
-                return hand.handler(event, this);
+                var userId = undefined;
+                if(event.source && event.source.type == 'user'){
+                    userId = event.source.userId;
+                }
+
+                return hand.handler(event, this, userId);
             }
         }
 

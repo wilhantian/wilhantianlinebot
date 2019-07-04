@@ -43,11 +43,11 @@ module.exports = [
                     "label": "客服",
                     "text": "客服"
                 },
-                {
-                    "type": "uri",
-                    "label": "领奖",
-                    "uri": "line://app/1579130869-2mbJK3nm"
-                },
+                // {
+                //     "type": "uri",
+                //     "label": "领奖",
+                //     "uri": "line://app/1579130869-2mbJK3nm"
+                // },
             ])
             return mgr.client.replyMessage(event.replyToken, message);
         }
