@@ -80,7 +80,7 @@ app.post(config.baseURL + "/set-default-menu", bodyParser.json(), async (req, re
 });
 
 app.listen(port, () => {
-    console.log(`listening on ${port}`);
+    console.log(`listening on ${port}`, new Date().getTime());
 });
 
 
