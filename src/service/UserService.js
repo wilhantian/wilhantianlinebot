@@ -27,7 +27,8 @@ class UserService{
             appid: APPID,
         })
         console.log(url + '?' + params);
-        request.get(url + '?' + params, (error, response, body)=>{
+        request.get(url + '?' + params, {json:true}, (error, response, body)=>{
+            response.body.
             console.log(body, typeof body, response.toJSON());
         });
     }
