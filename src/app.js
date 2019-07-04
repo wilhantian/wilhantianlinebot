@@ -5,7 +5,6 @@ const multer = require('multer');
 
 const config = require('./config');
 const MsgMgr = require('./message/Manager');
-const message = require('./message/message');
 
 const app = express();
 
@@ -15,7 +14,7 @@ const lineCfg = {
     channelSecret: config.channelSecret,
 };
 
-app.use(express.static('public'))
+app.use(config.baseURL, express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.post(config.baseURL + config.messageCallbackURI, line.middleware(lineCfg), (req, res) => {
