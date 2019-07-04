@@ -13,8 +13,8 @@ class UserService{
             appid: APPID,
             type: 2
         })
-        console.log(url + '/' + params);
-        request.get(url + '/' + params, (error, response, body)=>{
+        console.log(url + '?' + params);
+        request.get(url + '?' + params, (error, response, body)=>{
             console.log(body);
         });
     }
@@ -26,8 +26,8 @@ class UserService{
             openid: openid,
             appid: APPID,
         })
-        console.log(url + '/' + params);
-        request.get(url + '/' + params, (error, response, body)=>{
+        console.log(url + '?' + params);
+        request.get(url + '?' + params, (error, response, body)=>{
             console.log(body);
         });
     }
