@@ -28,7 +28,6 @@ class UserService{
         })
         console.log(url + '?' + params);
         request.get(url + '?' + params, {json:true}, (error, response, body)=>{
-            response.body.
             console.log(body, typeof body, response.toJSON());
         });
     }
