@@ -3,4 +3,5 @@ module.exports = {
     channelAccessToken: '',
     channelSecret: '',
     messageCallbackURI: '/callback',
+    cdnURL: '',
 }
