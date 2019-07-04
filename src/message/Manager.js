@@ -133,6 +133,22 @@ class Manager {
             });
         });
     }
+
+    setDefaultRichMenu(id){
+        return new Promise((next)=>{
+            this.client.setDefaultRichMenu(id).then(()=>{
+                next({
+                    state: true,
+                    id: id
+                })
+            }).catch((err)=>{
+                next({
+                    state: false,
+                    errot: err
+                })
+            })
+        });
+    }
 }
 
 module.exports = Manager;

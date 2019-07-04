@@ -75,6 +75,11 @@ app.post("/delete-menu", bodyParser.json(), async (req, res)=>{
     res.json(menuRes);
 })
 
+app.post("/set-default-menu", bodyParser.json(), async (req, res)=>{
+    var menuRes = await MsgMgr.inst.setDefaultRichMenu(req.body.id);
+    res.json(menuRes);
+});
+
 app.listen(port, () => {
     console.log(`listening on ${port}`);
 });

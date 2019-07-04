@@ -46,6 +46,12 @@
             padding-left: 6px;
             padding-right: 6px;
         }
+        .menu-set-default{
+            background: gray;
+            color: #000;
+            padding-left: 6px;
+            padding-right: 6px;
+        }
     </style>
     <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 </head>
@@ -141,7 +147,16 @@
             $('.menu-list').children().remove();
             for (var i = 0; i < list.length; i++) {
                 var o = list[i];
-                $('.menu-list').append('<div data-id="' + o.richMenuId + '" class="menu-item"><div class="menu-id">' + o.richMenuId + '</div><div class="menu-name">' + o.name + '</div><div class="menu-bar">' + o.chatBarText + '</div><div class="menu-delete" data-id="' + o.richMenuId + '">删除</div></div>');
+                console.log(o);
+                $('.menu-list').append(`
+                    <div data-id="${o.richMenuId}" class="menu-item">
+                        <div class="menu-id">${o.richMenuId}</div>
+                        <div class="menu-name">${o.name}</div>
+                        <div class="menu-bar">${o.chatBarText}</div>
+                        <div class="menu-delete" data-id="${o.richMenuId}">删除</div>
+                        <div class="menu-set-default" data-id="${o.richMenuId}">设置为默认菜单</div>
+                    </div>'
+                `);
             }
             listenerDelete();
         },
@@ -170,6 +185,27 @@
                 },
                 error: function (err) {
                     console.log(err);
+                }
+            })
+        });
+
+        $('.menu-set-default').on('click', function(event){
+            var id = event.target.dataset['id'];
+            $.ajax({
+                url: '/set-default-menu',
+                type: 'POST',
+                data: {
+                    id: id
+                },
+                success: function (res) {
+                    if (!res.state) {
+                        return;
+                    }
+                    alert("设置成功")
+                },
+                error: function (err) {
+                    console.log(err);
+                    alert("设置失败")
                 }
             })
         })
