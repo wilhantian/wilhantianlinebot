@@ -3,4 +3,11 @@ const confPub = require('./config-pub');
 
 const isDebug = true;
 
-module.exports = isDebug ? confDev : confPub;
+const config = isDebug ? confDev : confPub;
+modeule.exports = {
+    isDebug: isDebug,
+    ...config,
+    getPublicPath: function(path){
+        return config.cdnURL + '/' + path;
+    }
+}

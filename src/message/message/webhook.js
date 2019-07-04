@@ -1,5 +1,6 @@
 const TextTem = require('../template/Text');
 const WelcomeTem = require('../template/Welcome');
+const config = require('../../config');
 
 module.exports = [
     {
@@ -9,13 +10,13 @@ module.exports = [
             var welcomeMsg = WelcomeTem.create([
                 {
                     title: "あなたはワンコがお好き？？",//萌犬
-                    img: "https://box1.fanyoy.com/games/line-demo/res/dog_banner.png",
+                    img: config.getPublicPath('img/test.png'),
                     label: "あなたはワンコがお好き？？",
                     url: "line://app/1579130869-Dpk1R65p",
                 },
                 {
                     title: "😹イカれてる？イカれてない？？",//神经猫
-                    img: "https://box1.fanyoy.com/games/line-demo/res/cat_icon.png",
+                    img: config.getPublicPath('img/test.png'),
                     label: "😹イカれてる？イカれてない？？",
                     url: "line://app/1579130869-NEAZvJoV",
                 },
