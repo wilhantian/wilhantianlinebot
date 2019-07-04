@@ -1,4 +1,5 @@
-const BubbleGames = require('../template/BubbleGames');
+const BubbleGamesTem = require('../template/BubbleGames');
+const AlertTem = require('../template/Alert');
 
 module.exports = [
     {
@@ -7,7 +8,7 @@ module.exports = [
             "postback.data": "推荐",
         },
         handler: function(event, mgr){
-            var message = BubbleGames.create([
+            var message = BubbleGamesTem.create([
                 {
                     title: 'あなたはワンコがお好き？？',//萌犬
                     img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_1.png',
@@ -33,14 +34,22 @@ module.exports = [
     {
         type: "message",
         param: {
-            "message.type": "text",
-            "message.text": "卧槽"
+            "postback.data": "社区",
         },
         handler: function(event, mgr){
-            return mgr.client.replyMessage(event.replyToken, {
-                type: 'text', 
-                text: '我凑'
-            });
+            var message = AlertTem.create('你想要做什么?', [
+                {
+                    "type": "message",
+                    "label": "客服",
+                    "text": "客服"
+                },
+                {
+                    "type": "uri",
+                    "label": "领奖",
+                    "uri": "line://app/1579130869-2mbJK3nm"
+                },
+            ])
+            return mgr.client.replyMessage(event.replyToken, message);
         }
     },
 ]
