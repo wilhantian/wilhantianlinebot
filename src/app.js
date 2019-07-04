@@ -56,9 +56,9 @@ app.all(config.baseURL + '/upload', upload.single('image'), async (req, res)=>{
     );
     console.log(menuRes);
     if(menuRes.state){
-        res.redirect('/admin.html');
+        res.redirect(config.baseURL + '/admin.html');
     }else{
-        res.redirect('/error.html');
+        res.redirect(config.baseURL + '/error.html');
     }
 });
 
