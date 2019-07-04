@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "startbg": "pm2 start index.js"
+    "startbg": "pm2 start index.js --name line-bot",
+    "stopbg": "pm2 stop line-bot",
+    "logs": "pm2 logs line-bot"
   },
   "author": "",
   "license": "ISC",
