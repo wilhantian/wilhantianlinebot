@@ -38,7 +38,7 @@ app.all(config.baseURL + '/upload', upload.single('image'), async (req, res)=>{
     try {
         areas = eval(req.body.areas);
     } catch (error) {
-        res.redirect('/error.html');
+        res.redirect(config.baseURL + '/error.html');
         return;
     }
 
@@ -83,15 +83,6 @@ app.listen(port, () => {
     console.log(`listening on ${port}`);
 });
 
-
-// MsgMgr.inst.register('message', {
-//     'message.type': 'text',
-//     'message.text': 'hello'
-// }, function (event) {
-//     return Line.replyMessage(event.replyToken, {
-//         type: 'text', text: event.message.text + '...'
-//     });
-// });
 
 // 初始化消息管理器
 MsgMgr.inst;

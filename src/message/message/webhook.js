@@ -13,7 +13,7 @@ module.exports = [
             var welcomeMsg = WelcomeTem.create([
                 {
                     title: "あなたはワンコがお好き？？",//萌犬
-                    img: config.getPublicPath('img/test.png'),
+                    img: config.getPublicPath('img/welcome-banner.png'),
                     label: "あなたはワンコがお好き？？",
                     url: "line://app/1579130869-Dpk1R65p",
                 },
