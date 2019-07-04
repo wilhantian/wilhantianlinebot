@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <!-- <base href=""><base> -->
     <style>
         input {
             display: block;
@@ -136,8 +137,10 @@
 </html>
 
 <script>
+    var baseURL = '/msgapi';
+
     $.ajax({
-        url: '/get-menus',
+        url: baseURL + '/get-menus',
         type: 'POST',
         success: function (res) {
             if (!res.state) {
@@ -172,7 +175,7 @@
             console.log(id);
 
             $.ajax({
-                url: '/delete-menu',
+                url: baseURL + '/delete-menu',
                 type: 'POST',
                 data: {
                     id: id
@@ -192,7 +195,7 @@
         $('.menu-set-default').on('click', function(event){
             var id = event.target.dataset['id'];
             $.ajax({
-                url: '/set-default-menu',
+                url: baseURL + '/set-default-menu',
                 type: 'POST',
                 data: {
                     id: id

@@ -18,7 +18,7 @@ const lineCfg = {
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post(config.messageCallbackURI, line.middleware(lineCfg), (req, res) => {
+app.post(config.baseURL + config.messageCallbackURI, line.middleware(lineCfg), (req, res) => {
     Promise
         .all(req.body.events.map((event)=>{
             return MsgMgr.inst.handle(event);
@@ -34,7 +34,7 @@ var storage = multer.memoryStorage()
 var upload = multer({
     storage: storage
 });
-app.all('/upload', upload.single('image'), async (req, res)=>{
+app.all(config.baseURL + '/upload', upload.single('image'), async (req, res)=>{
     var areas;
     try {
         areas = eval(req.body.areas);
@@ -63,19 +63,19 @@ app.all('/upload', upload.single('image'), async (req, res)=>{
     }
 });
 
-app.all("/get-menus", async (req, res)=>{
+app.all(config.baseURL + "/get-menus", async (req, res)=>{
     var menuRes = await MsgMgr.inst.getAllRichMenu();
     res.json(menuRes);
 })
 
-app.post("/delete-menu", bodyParser.json(), async (req, res)=>{
+app.post(config.baseURL + "/delete-menu", bodyParser.json(), async (req, res)=>{
     console.log(req.body.id);
     var menuRes = await MsgMgr.inst.deleteRichMenu(req.body.id);
     console.log(menuRes);
     res.json(menuRes);
 })
 
-app.post("/set-default-menu", bodyParser.json(), async (req, res)=>{
+app.post(config.baseURL + "/set-default-menu", bodyParser.json(), async (req, res)=>{
     var menuRes = await MsgMgr.inst.setDefaultRichMenu(req.body.id);
     res.json(menuRes);
 });
