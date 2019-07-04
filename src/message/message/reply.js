@@ -1,14 +1,13 @@
 module.exports = [
     {
-        type: "message",
+        type: "postback",
         param: {
-            "message.type": "text",
-            "message.text": "你好"
+            "postback.data": "推荐",
         },
         handler: function(event, mgr){
             return mgr.client.replyMessage(event.replyToken, {
                 type: 'text', 
-                text: '你好你妹妹'
+                text: '推荐你妹妹'
             });
         }
     },

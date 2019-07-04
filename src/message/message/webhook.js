@@ -22,13 +22,13 @@ module.exports = [
                 },
                 {
                     title: "🔥ソコは違う！！！！",//苹果
-                    img: "https://box1.fanyoy.com/games/line-demo/res/apple_icon.png",
+                    img: config.getPublicPath('img/test.png'),
                     label: "🔥ソコは違う！！！！",
                     url: "line://app/1579130869-GYBx2Wg0",
                 },
                 {
                     title: "Monster",
-                    img: "https://box1.fanyoy.com/games/line-demo/res/monster_icon.png",
+                    img: config.getPublicPath('img/test.png'),
                     label: "Monster",
                     url: "line://app/1579130869-1egl9v04",
                 },
