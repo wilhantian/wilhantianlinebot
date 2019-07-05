@@ -81,7 +81,7 @@ app.post(config.baseURL + "/set-default-menu", bodyParser.json(), async (req, re
     res.json(menuRes);
 });
 
-function start(){
+async function start(){
     await MsgService.initRecommendGameInfos([
         'dog',
         'monst',
