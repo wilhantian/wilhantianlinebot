@@ -23,6 +23,8 @@ module.exports = {
                         "type": "text",
                         "text": l.title,
                         "size": "sm",
+                        "wrap": true,
+                        "maxLines": 2,
                         "color": "#000000",
                         "gravity": "center"
                     },
