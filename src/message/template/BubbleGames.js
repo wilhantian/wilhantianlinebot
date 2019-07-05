@@ -59,7 +59,7 @@ module.exports = {
                   "action": {
                     "type": "uri",
                     "uri": url ,
-                    "label": "立即开玩"
+                    "label": "Start"
                   }
                 }
               ]
