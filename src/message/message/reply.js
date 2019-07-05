@@ -14,7 +14,7 @@ module.exports = [
                     title: info.subhead,
                     img: info.conductImage,
                     url: info.liff,
-                    desc: des,
+                    desc: info.des,
                 }
             });
             var message = BubbleGamesTem.create(objs);
