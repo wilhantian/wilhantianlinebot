@@ -4,7 +4,7 @@ module.exports = {
     create: function (links) {
         var contents = [];
         for (var i = 0; i < links.length; i++) {
-            contents.push(this.createOne(null, null, null, links[i].desc))
+            contents.push(this.createOne(links.title, links.img, links.url, links[i].desc))
         }
         return {
             type: "flex",
@@ -21,7 +21,7 @@ module.exports = {
             "type": "bubble",
             "hero": {
               "type": "image",
-              "url": img || "https://static.6699.jp/mp/image/1559806541208_GlfyiqmioH1Sv2MH.jpg",
+              "url": img ,
               "size": "full",
               "aspectRatio": "1.88:1"
             },
@@ -58,7 +58,7 @@ module.exports = {
                   "type": "button",
                   "action": {
                     "type": "uri",
-                    "uri": url || "https://baidu.com",
+                    "uri": url ,
                     "label": "立即开玩"
                   }
                 }

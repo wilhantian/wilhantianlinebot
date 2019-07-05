@@ -1,5 +1,6 @@
 const BubbleGamesTem = require('../template/BubbleGames');
 const AlertTem = require('../template/Alert');
+const MsgService = require('../../service/MsgService');
 
 module.exports = [
     {
@@ -8,26 +9,15 @@ module.exports = [
             "postback.data": "推荐",
         },
         handler: function(event, mgr){
-            var message = BubbleGamesTem.create([
-                {
-                    title: 'あなたはワンコがお好き？？',//萌犬
-                    img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_1.png',
-                    url: 'line://app/1579130869-Dpk1R65p',
-                    desc: 'ヒーローたちと共に怪物を倒そう！\nスキル、ヒーロー強化を駆使し有利に進めよう！\nヒマな時にログインしてポチポチタップだ！\nさぁ冒険に出発しよう！\n※オフラインでも報酬を獲得できるぞ！',
-                },
-                {
-                    title: '足球',//足球
-                    img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_2.png',
-                    url: 'line://app/1579130869-pAZDoX4A',
-                    desc: '动作类',
-                },
-                {
-                    title: 'あなたはワンコがお好き？？',//萌犬
-                    img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_3.png',
-                    url: 'line://app/1579130869-Dpk1R65p',
-                    desc: '挂机类',
+            var objs = MsgService.recommendGameInfos.map((info)=>{
+                return {
+                    title: info.subhead,
+                    img: info.conductImage,
+                    url: info.liff,
+                    desc: des,
                 }
-            ])
+            });
+            var message = BubbleGamesTem.create(objs);
             return mgr.client.replyMessage(event.replyToken, message);
         }
     },

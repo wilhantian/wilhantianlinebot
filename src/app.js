@@ -6,6 +6,7 @@ const multer = require('multer');
 
 const config = require('./config');
 const MsgMgr = require('./message/Manager');
+const MsgService = require('./service/MsgService');
 
 const app = express();
 
@@ -80,10 +81,23 @@ app.post(config.baseURL + "/set-default-menu", bodyParser.json(), async (req, re
     res.json(menuRes);
 });
 
-app.listen(port, () => {
-    console.log(`listening on ${port}`, new Date().getTime());
-});
+function start(){
+    await MsgService.initRecommendGameInfos([
+        'dog',
+        'monst',
+        'stop'
+    ], [
+        'https://baidu.com',
+        'https://baidu.com',
+        'https://baidu.com',
+    ])
 
+    app.listen(port, () => {
+        console.log(`listening on ${port}`, new Date().getTime());
+    });
+    
+    // 初始化消息管理器
+    MsgMgr.inst;
+}
 
-// 初始化消息管理器
-MsgMgr.inst;
+start();
