@@ -45,7 +45,7 @@ module.exports = {
         };
     },
 
-    createOne = function(title, img, url, desc){
+    createOne: function(title, img, url, desc){
         return {
             "type": "bubble",
             "hero": {
