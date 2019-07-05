@@ -2,6 +2,7 @@ const line = require('@line/bot-sdk');
 const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
+// const fs = require('fs');
 
 const config = require('./config');
 const MsgMgr = require('./message/Manager');
