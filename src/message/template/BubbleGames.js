@@ -42,7 +42,8 @@ module.exports = {
                   "text": desc,
                   "color": "#666666",
                   "wrap": true,
-                  "maxLines": 3
+                  "maxLines": 3,
+                  "size": "sm"
                 }
               ]
             },
