@@ -29,10 +29,15 @@ class GameService {
                     //     "adImage": "https://static.6699.jp/mp/image/1559807750965_n9RWlWoiqr34AET1.jpg", 
                     //     "des": "あなたはワンコがお好き？？\nかわいいワンコからキモイ？ワンコまで！\nキモイワンコをどう作るかって？？\n同じワンコ同士をスライドして合成すればおｋ！\n他のフレンドとわんわん楽しもう♪" 
                     // }
+                    body.liff = this.getGameLiff(gameId);
                     next(body);
                 }
             });
         });
+    }
+
+    getGameLiff(gameId){
+        return `line://app/1595438846-2Pk99Vrq?appid=${gameId}`;
     }
 }
 

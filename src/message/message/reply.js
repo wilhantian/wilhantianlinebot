@@ -28,7 +28,7 @@ module.exports = [
             "postback.data": "客服"
         },
         handler: function(event, mgr, openid){
-            var text = '如果您有任何问题请通过下方邮箱进行联系我们\nsupport@6699.jp\n我们会在当天进行回复';
+            var text = 'ご質問・ご不明点については下記のサポートまでご連絡ください\nsupport@6699.jp\n※内容によってはご返信できない場合がございます。';
             return mgr.client.replyMessage(event.replyToken, TextTem.create(text));
         }
     }

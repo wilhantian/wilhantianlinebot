@@ -21,7 +21,6 @@ class MsgService {
                 console.log(id);
                 var msg = await GameService.getGameInfo(id);
                 if(msg){
-                    msg.liff = liffs[i];
                     this.recommendGameInfos.push(msg);
                 }
             }
@@ -36,7 +35,6 @@ class MsgService {
                 console.log(id);
                 var msg = await GameService.getGameInfo(id);
                 if(msg){
-                    msg.liff = liffs[i];
                     this.welcomeGameInfos.push(msg);
                 }
             }
