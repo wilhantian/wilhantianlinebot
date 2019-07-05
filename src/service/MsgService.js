@@ -14,7 +14,7 @@ class MsgService {
         this.welcomeGameInfos = [];
     }
 
-    initRecommendGameInfos(ids, liffs){
+    initRecommendGameInfos(ids){
         return new Promise( async (next)=>{
             for(var i=0; i<ids.length; i++){
                 var id = ids[i];
@@ -28,7 +28,7 @@ class MsgService {
         });
     }
 
-    initWelcomeGameInfos(ids, liffs){
+    initWelcomeGameInfos(ids){
         return new Promise( async (next)=>{
             for(var i=0; i<ids.length; i++){
                 var id = ids[i];

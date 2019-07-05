@@ -83,23 +83,16 @@ app.post(config.baseURL + "/set-default-menu", bodyParser.json(), async (req, re
 
 async function start(){
     await MsgService.initRecommendGameInfos([
-        'dog',
-        'monst',
-        'stop'
-    ], [
-        'https://baidu.com',
-        'https://baidu.com',
-        'https://baidu.com',
+        'nyan',
+        'farm',
+        'apple'
     ]);
 
     await MsgService.initWelcomeGameInfos([
-        'dog',
+        'friend',
         'monst',
-        'stop'
-    ], [
-        'https://baidu.com',
-        'https://baidu.com',
-        'https://baidu.com',
+        'stop',
+        'hospi',
     ]);
 
     app.listen(port, () => {
