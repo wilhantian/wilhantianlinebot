@@ -11,10 +11,10 @@ module.exports = [
         handler: function(event, mgr){
             var objs = MsgService.recommendGameInfos.map((info)=>{
                 return {
-                    title: info.subhead,
+                    title: info.name,
                     img: info.conductImage,
                     url: info.liff,
-                    desc: info.des,
+                    desc: info.subhead,
                 }
             });
             var message = BubbleGamesTem.create(objs);
