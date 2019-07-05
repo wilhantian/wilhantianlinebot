@@ -16,10 +16,12 @@ class MsgService {
     initRecommendGameInfos(ids, liffs){
         return new Promise( async (next)=>{
             for(var i=0; i<ids.length; i++){
-                var msg = await GameService.getGameInfo(ids[i]);
+                var id = ids[i];
+                console.log(id);
+                var msg = await GameService.getGameInfo(id);
                 if(msg){
                     msg.liff = liffs[i];
-                    this.recommendGameInfo.push(msg);
+                    this.recommendGameInfos.push(msg);
                 }
             }
             next(true);
