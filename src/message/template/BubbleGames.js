@@ -4,7 +4,7 @@ module.exports = {
     create: function (links) {
         var contents = [];
         for (var i = 0; i < links.length; i++) {
-            contents.push(this.createOne())
+            contents.push(this.createOne(null, null, null, links[i].desc))
         }
         return {
             type: "flex",
