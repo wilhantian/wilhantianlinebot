@@ -13,7 +13,11 @@ module.exports = [
                     title: 'あなたはワンコがお好き？？',//萌犬
                     img: 'https://box1.fanyoy.com/games/dog/resource/share_fb/share_1.png',
                     url: 'line://app/1579130869-Dpk1R65p',
-                    desc: '挂机类',
+                    desc: `ヒーローたちと共に怪物を倒そう！
+                    スキル、ヒーロー強化を駆使し有利に進めよう！
+                    ヒマな時にログインしてポチポチタップだ！
+                    さぁ冒険に出発しよう！
+                    ※オフラインでも報酬を獲得できるぞ！`,
                 },
                 {
                     title: '足球',//足球

@@ -5,35 +5,6 @@ module.exports = {
         var contents = [];
         for (var i = 0; i < links.length; i++) {
             contents.push(this.createOne())
-            // contents.push({
-            //     "type": "bubble",
-            //     "hero": {
-            //         "type": "image",
-            //         "url": links[i].img,
-            //         "size": "full",
-            //         "aspectRatio": "1.9:1",
-            //         "action": {
-            //             "type": "uri",
-            //             "label": links[i].title,
-            //             "uri": links[i].url
-            //         }
-            //     },
-            //     "body": {
-            //         "type": "box",
-            //         "layout": "horizontal",
-            //         "contents": [
-            //             {
-            //                 "type": "text",
-            //                 "text": links[i].title
-            //             }
-            //         ],
-            //         "action": {
-            //             "type": "uri",
-            //             "label": links[i].title,
-            //             "uri": links[i].url
-            //         }
-            //     },
-            // });
         }
         return {
             type: "flex",
@@ -68,10 +39,10 @@ module.exports = {
                 },
                 {
                   "type": "text",
-                  "text": desc || "大农场真的好玩\n哈哈阿萨德\naoisdjoas123123",
+                  "text": desc,
                   "color": "#666666",
                   "wrap": true,
-                  "maxLines": 2
+                  "maxLines": 3
                 }
               ]
             },
