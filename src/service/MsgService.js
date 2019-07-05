@@ -8,7 +8,10 @@ const APPID = config.channelId;
 const GameService = require('./GameService');
 
 class MsgService {
-    recommendGameInfos = [];
+    // recommendGameInfos = [];
+    constructor(){
+        this.recommendGameInfos = [];
+    }
 
     initRecommendGameInfos(ids, liffs){
         return new Promise( async (next)=>{
