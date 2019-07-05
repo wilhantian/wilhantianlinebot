@@ -90,7 +90,17 @@ async function start(){
         'https://baidu.com',
         'https://baidu.com',
         'https://baidu.com',
-    ])
+    ]);
+
+    await MsgService.initWelcomeGameInfos([
+        'dog',
+        'monst',
+        'stop'
+    ], [
+        'https://baidu.com',
+        'https://baidu.com',
+        'https://baidu.com',
+    ]);
 
     app.listen(port, () => {
         console.log(`listening on ${port}`, new Date().getTime());

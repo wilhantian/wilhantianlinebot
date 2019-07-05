@@ -51,7 +51,7 @@ module.exports = {
                     "type": "image",
                     "url": links[0].img,
                     "size": "full",
-                    "aspectRatio": "2:1",
+                    "aspectRatio": "1.88:1",
                     "action": {
                         "type": "uri",
                         "label": links[0].label,

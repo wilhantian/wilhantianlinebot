@@ -8,9 +8,10 @@ const APPID = config.channelId;
 const GameService = require('./GameService');
 
 class MsgService {
-    // recommendGameInfos = [];
+    
     constructor(){
         this.recommendGameInfos = [];
+        this.welcomeGameInfos = [];
     }
 
     initRecommendGameInfos(ids, liffs){
@@ -22,6 +23,21 @@ class MsgService {
                 if(msg){
                     msg.liff = liffs[i];
                     this.recommendGameInfos.push(msg);
+                }
+            }
+            next(true);
+        });
+    }
+
+    initWelcomeGameInfos(ids, liffs){
+        return new Promise( async (next)=>{
+            for(var i=0; i<ids.length; i++){
+                var id = ids[i];
+                console.log(id);
+                var msg = await GameService.getGameInfo(id);
+                if(msg){
+                    msg.liff = liffs[i];
+                    this.welcomeGameInfos.push(msg);
                 }
             }
             next(true);
